@@ -10,16 +10,17 @@ using System.Windows.Forms;
 
 namespace DunaHouseGombazo
 {
-    public partial class Form1 : Form
+    public partial class AboutDialogForm : Form
     {
-        public Form1()
+        public AboutDialogForm()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("csaa");
+            this.DialogResult = System.Windows.Forms.DialogResult.No;
+            this.Close();
         }
     }
 }
