@@ -12,16 +12,21 @@ namespace DunaHouseGombazo
 {
     public partial class LoginForm : Form
     {
+
         public LoginForm()
         {
             InitializeComponent();
             using (var db = new DHSEntities())
             {
-                if(!db.User.Any(x=>x.UserName=="hailey")){
-                    db.User.Add((User)UserIdentity.Create("hailey","Hailey Kőbányai","hailey"));
+                if (!db.User.Any(x => x.UserName == "hailey"))
+                {
+                    db.User.Add(User.Create("hailey", "Hailey Kőbányai", "hailey", "hailey@dh.hu", "+707033373373"));
+                    db.SaveChanges();
+                    db.User.First().IsAdmin = true;
                     db.SaveChanges();
                 }
             }
+
         }
 
         private void EscapeHandler(object sender, KeyPressEventArgs e)
@@ -29,6 +34,10 @@ namespace DunaHouseGombazo
             if (e.KeyChar == 27)
             {
                 exitButton.Focus();
+            }
+            else if (e.KeyChar == 13)
+            {
+                signInButton_Click(sender, e);
             }
         }
 
@@ -45,12 +54,10 @@ namespace DunaHouseGombazo
 
         private void signInButton_Click(object sender, EventArgs e)
         {
-            //UserIdentity userIdentity = new UserIdentity()
-            //{
-            //    UserName = "hailey",
-            //    FullName = "Kőbányai Hailey",
-                
-            //}; // instead this we'll need to authorize and authenticate
+
+            nameTextBox.BackColor = DefaultBackColor;
+            passwordTextBox.BackColor = DefaultBackColor;
+
             var userName = nameTextBox.Text;
             var password = passwordTextBox.Text;
 
@@ -61,24 +68,31 @@ namespace DunaHouseGombazo
                 if (matchedUser == null) // no such user
                 {
                     // handle error and return
+                    this.Size = this.MaximumSize;
+                    errorLabel.Text = "There was an error with the username.";
+                    nameTextBox.BackColor = Color.LightSalmon;
+
                     return;
                 }
                 else
                 {
-                    var sha1 = System.Security.Cryptography.SHA1.Create();
-                    var pwBytes = Encoding.UTF8.GetBytes(password);
-                    var hash = sha1.ComputeHash(pwBytes);
-
-                    if (matchedUser.Password == Convert.ToBase64String(hash))
+                    if (matchedUser.Password == User.HashAPassword(password))
                     {
                         //match and allow
-                        var dashBoard = new DashboardForm(UserIdentity.From(matchedUser));
+                        errorLabel.Text = "";
+                        this.Size = this.MinimumSize;
+
+                        var dashBoard = new DashboardForm(matchedUser);
                         dashBoard.Show();
                         this.Hide();
                     }
                     else
                     {
                         // incorrect password, handle and return
+                        this.Size = this.MaximumSize;
+                        errorLabel.Text = "Incorrect password.";
+                        passwordTextBox.BackColor = Color.LightSalmon;
+
                         return;
                     }
                 }

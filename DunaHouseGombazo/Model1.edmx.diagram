@@ -6,6 +6,12 @@
     <edmx:Diagrams>
       <Diagram DiagramId="7a6dca5456da41799dc2634903fdfab4" Name="Diagram1">
         <EntityTypeShape EntityType="DHSModel.User" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DHSModel.House" Width="1.5" PointX="3.625" PointY="0.875" />
+        <AssociationConnector Association="DHSModel.FK_CreatedBy_to_User" />
+        <AssociationConnector Association="DHSModel.FK_LastEditedBy_to_User" />
+        <EntityTypeShape EntityType="DHSModel.Extra" Width="1.5" PointX="6" PointY="1" />
+        <AssociationConnector Association="DHSModel.FK_Extra_To_House" />
+        <AssociationConnector Association="DHSModel.FK_Representative_to_User" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

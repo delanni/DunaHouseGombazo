@@ -34,6 +34,7 @@
             this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.errorLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // signInButton
@@ -96,19 +97,29 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Password";
             // 
+            // errorLabel
+            // 
+            this.errorLabel.AutoSize = true;
+            this.errorLabel.ForeColor = System.Drawing.Color.Red;
+            this.errorLabel.Location = new System.Drawing.Point(133, 219);
+            this.errorLabel.Name = "errorLabel";
+            this.errorLabel.Size = new System.Drawing.Size(0, 13);
+            this.errorLabel.TabIndex = 4;
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 221);
             this.ControlBox = false;
+            this.Controls.Add(this.errorLabel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.passwordTextBox);
             this.Controls.Add(this.nameTextBox);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.signInButton);
-            this.MaximumSize = new System.Drawing.Size(500, 260);
+            this.MaximumSize = new System.Drawing.Size(500, 300);
             this.MinimumSize = new System.Drawing.Size(500, 260);
             this.Name = "LoginForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
@@ -128,6 +139,7 @@
         private System.Windows.Forms.TextBox passwordTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label errorLabel;
 
     }
 }

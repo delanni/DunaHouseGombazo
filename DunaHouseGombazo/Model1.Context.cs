@@ -26,5 +26,7 @@ namespace DunaHouseGombazo
         }
     
         public DbSet<User> User { get; set; }
+        public DbSet<House> House { get; set; }
+        public DbSet<Extra> Extra { get; set; }
     }
 }

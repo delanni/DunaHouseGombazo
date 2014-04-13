@@ -34,7 +34,12 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.nameLabel = new System.Windows.Forms.Label();
+            this.nameLabelX = new System.Windows.Forms.LinkLabel();
+            this.searchUsersButton = new System.Windows.Forms.Button();
+            this.userSearchTextBox = new System.Windows.Forms.TextBox();
+            this.usersListBox = new System.Windows.Forms.ListBox();
+            this.userSearchLabel = new System.Windows.Forms.Label();
+            this.addUserButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // infoLabel
@@ -58,6 +63,7 @@
             this.browseButton.TabIndex = 0;
             this.browseButton.Text = "Browse";
             this.browseButton.UseVisualStyleBackColor = true;
+            this.browseButton.Click += new System.EventHandler(this.browseButton_Click);
             // 
             // button1
             // 
@@ -99,31 +105,89 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // nameLabel
+            // nameLabelX
             // 
-            this.nameLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.nameLabel.AutoEllipsis = true;
-            this.nameLabel.AutoSize = true;
-            this.nameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.nameLabel.Location = new System.Drawing.Point(697, 29);
-            this.nameLabel.MinimumSize = new System.Drawing.Size(300, 0);
-            this.nameLabel.Name = "nameLabel";
-            this.nameLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.nameLabel.Size = new System.Drawing.Size(300, 24);
-            this.nameLabel.TabIndex = 3;
-            this.nameLabel.Text = "NAME HERE";
-            this.nameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.nameLabelX.AutoSize = true;
+            this.nameLabelX.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.nameLabelX.Location = new System.Drawing.Point(697, 29);
+            this.nameLabelX.MinimumSize = new System.Drawing.Size(300, 0);
+            this.nameLabelX.Name = "nameLabelX";
+            this.nameLabelX.Size = new System.Drawing.Size(300, 24);
+            this.nameLabelX.TabIndex = 4;
+            this.nameLabelX.TabStop = true;
+            this.nameLabelX.Text = "NAME HERE";
+            this.nameLabelX.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.nameLabelX.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.nameLabel_LinkClicked);
+            // 
+            // searchUsersButton
+            // 
+            this.searchUsersButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.searchUsersButton.Location = new System.Drawing.Point(117, 80);
+            this.searchUsersButton.Name = "searchUsersButton";
+            this.searchUsersButton.Size = new System.Drawing.Size(100, 100);
+            this.searchUsersButton.TabIndex = 0;
+            this.searchUsersButton.Text = "Search users";
+            this.searchUsersButton.UseVisualStyleBackColor = true;
+            this.searchUsersButton.Click += new System.EventHandler(this.browseUsersButton_Click);
+            // 
+            // userSearchTextBox
+            // 
+            this.userSearchTextBox.Location = new System.Drawing.Point(118, 220);
+            this.userSearchTextBox.Name = "userSearchTextBox";
+            this.userSearchTextBox.Size = new System.Drawing.Size(100, 20);
+            this.userSearchTextBox.TabIndex = 6;
+            this.userSearchTextBox.Visible = false;
+            this.userSearchTextBox.TextChanged += new System.EventHandler(this.userSearchTextBox_TextChanged);
+            // 
+            // usersListBox
+            // 
+            this.usersListBox.DisplayMember = "FullName";
+            this.usersListBox.FormattingEnabled = true;
+            this.usersListBox.Location = new System.Drawing.Point(224, 80);
+            this.usersListBox.Name = "usersListBox";
+            this.usersListBox.Size = new System.Drawing.Size(120, 160);
+            this.usersListBox.TabIndex = 7;
+            this.usersListBox.ValueMember = "Id";
+            this.usersListBox.Visible = false;
+            this.usersListBox.SelectedIndexChanged += new System.EventHandler(this.usersListBox_SelectedIndexChanged);
+            this.usersListBox.DoubleClick += new System.EventHandler(this.usersListBox_DoubleClick);
+            // 
+            // userSearchLabel
+            // 
+            this.userSearchLabel.AutoSize = true;
+            this.userSearchLabel.Location = new System.Drawing.Point(97, 204);
+            this.userSearchLabel.Name = "userSearchLabel";
+            this.userSearchLabel.Size = new System.Drawing.Size(121, 13);
+            this.userSearchLabel.TabIndex = 8;
+            this.userSearchLabel.Text = "Type name or username";
+            this.userSearchLabel.Visible = false;
+            // 
+            // addUserButton
+            // 
+            this.addUserButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.addUserButton.Location = new System.Drawing.Point(565, 80);
+            this.addUserButton.Name = "addUserButton";
+            this.addUserButton.Size = new System.Drawing.Size(100, 100);
+            this.addUserButton.TabIndex = 0;
+            this.addUserButton.Text = "Add user";
+            this.addUserButton.UseVisualStyleBackColor = true;
+            this.addUserButton.Click += new System.EventHandler(this.addUserButton_Click);
             // 
             // DashboardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 661);
-            this.Controls.Add(this.nameLabel);
+            this.Controls.Add(this.userSearchLabel);
+            this.Controls.Add(this.usersListBox);
+            this.Controls.Add(this.userSearchTextBox);
+            this.Controls.Add(this.nameLabelX);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.addUserButton);
+            this.Controls.Add(this.searchUsersButton);
             this.Controls.Add(this.browseButton);
             this.Controls.Add(this.infoLabel);
             this.MinimumSize = new System.Drawing.Size(1024, 700);
@@ -146,6 +210,11 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Label nameLabel;
+        private System.Windows.Forms.LinkLabel nameLabelX;
+        private System.Windows.Forms.Button searchUsersButton;
+        private System.Windows.Forms.TextBox userSearchTextBox;
+        private System.Windows.Forms.ListBox usersListBox;
+        private System.Windows.Forms.Label userSearchLabel;
+        private System.Windows.Forms.Button addUserButton;
     }
 }

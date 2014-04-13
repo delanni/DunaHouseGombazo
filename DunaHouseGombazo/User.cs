@@ -14,9 +14,27 @@ namespace DunaHouseGombazo
     
     public partial class User
     {
+        public User()
+        {
+            this.HousesCreated = new HashSet<House>();
+            this.HousesLastEdited = new HashSet<House>();
+            this.HousesRepresented = new HashSet<House>();
+        }
+    
         public int Id { get; set; }
         public string UserName { get; set; }
         public string FullName { get; set; }
         public string Password { get; set; }
+        public bool CanEdit { get; set; }
+        public bool CanView { get; set; }
+        public bool CanExport { get; set; }
+        public bool CanImport { get; set; }
+        public string Email { get; set; }
+        public string Phone { get; set; }
+        public bool IsAdmin { get; set; }
+    
+        public virtual ICollection<House> HousesCreated { get; set; }
+        public virtual ICollection<House> HousesLastEdited { get; set; }
+        public virtual ICollection<House> HousesRepresented { get; set; }
     }
 }
