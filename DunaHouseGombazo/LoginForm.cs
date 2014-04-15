@@ -25,6 +25,14 @@ namespace DunaHouseGombazo
                     db.User.First().IsAdmin = true;
                     db.SaveChanges();
                 }
+
+                if (!db.User.Any(x => x.UserName == "x"))
+                {
+                    db.User.Add(User.Create("x", "x y", "x", "xy@dh.hu", "+307033373373"));
+                    db.SaveChanges();
+                    db.User.First().IsAdmin = true;
+                    db.SaveChanges();
+                }
             }
 
         }

@@ -46,7 +46,7 @@
             // 
             this.infoLabel.AutoSize = true;
             this.infoLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.infoLabel.Location = new System.Drawing.Point(8, 640);
+            this.infoLabel.Location = new System.Drawing.Point(8, 641);
             this.infoLabel.Name = "infoLabel";
             this.infoLabel.Size = new System.Drawing.Size(142, 13);
             this.infoLabel.TabIndex = 1;
@@ -177,7 +177,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 661);
+            this.ClientSize = new System.Drawing.Size(1008, 662);
             this.Controls.Add(this.userSearchLabel);
             this.Controls.Add(this.usersListBox);
             this.Controls.Add(this.userSearchTextBox);
