@@ -208,6 +208,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="JSONImport\" />
     <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

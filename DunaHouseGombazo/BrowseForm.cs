@@ -62,5 +62,11 @@ namespace DunaHouseGombazo
         {
 
         }
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+
+            // Összeállítani az érdekes kitöltött keresési mezőket, és ezek alapján megcsinálni a lekérdezést, majd betölteni a kapott adatot a listába
+        }
     }
 }
