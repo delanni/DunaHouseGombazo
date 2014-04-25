@@ -12,9 +12,18 @@ namespace DunaHouseGombazo
 {
     public partial class BrowseForm : Form
     {
+        DHSEntities db;
         public BrowseForm()
         {
             InitializeComponent();
+        }
+
+        private void BrowseForm_Load(object sender, EventArgs e)
+        {
+            db = new DHSEntities();
+            houseBindingSource.DataSource = db.House;
+
+
         }
 
         private void BrowseForm_FormClosing(object sender, FormClosingEventArgs e)
