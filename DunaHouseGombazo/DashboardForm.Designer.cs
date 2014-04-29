@@ -31,8 +31,8 @@
             this.infoLabel = new System.Windows.Forms.LinkLabel();
             this.browseButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.exportButton = new System.Windows.Forms.Button();
+            this.importButton = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.nameLabelX = new System.Windows.Forms.LinkLabel();
             this.searchUsersButton = new System.Windows.Forms.Button();
@@ -75,25 +75,27 @@
             this.button1.Text = "Add new";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // exportButton
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button2.Location = new System.Drawing.Point(789, 314);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 100);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "Export";
-            this.button2.UseVisualStyleBackColor = true;
+            this.exportButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.exportButton.Location = new System.Drawing.Point(789, 314);
+            this.exportButton.Name = "exportButton";
+            this.exportButton.Size = new System.Drawing.Size(100, 100);
+            this.exportButton.TabIndex = 0;
+            this.exportButton.Text = "Export";
+            this.exportButton.UseVisualStyleBackColor = true;
+            this.exportButton.Click += new System.EventHandler(this.exportButton_Click);
             // 
-            // button3
+            // importButton
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button3.Location = new System.Drawing.Point(565, 314);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(100, 100);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "Import";
-            this.button3.UseVisualStyleBackColor = true;
+            this.importButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.importButton.Location = new System.Drawing.Point(565, 314);
+            this.importButton.Name = "importButton";
+            this.importButton.Size = new System.Drawing.Size(100, 100);
+            this.importButton.TabIndex = 0;
+            this.importButton.Text = "Import";
+            this.importButton.UseVisualStyleBackColor = true;
+            this.importButton.Click += new System.EventHandler(this.importButton_Click);
             // 
             // button4
             // 
@@ -183,8 +185,8 @@
             this.Controls.Add(this.userSearchTextBox);
             this.Controls.Add(this.nameLabelX);
             this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.importButton);
+            this.Controls.Add(this.exportButton);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.addUserButton);
             this.Controls.Add(this.searchUsersButton);
@@ -207,8 +209,8 @@
         private System.Windows.Forms.LinkLabel infoLabel;
         private System.Windows.Forms.Button browseButton;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button exportButton;
+        private System.Windows.Forms.Button importButton;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.LinkLabel nameLabelX;
         private System.Windows.Forms.Button searchUsersButton;

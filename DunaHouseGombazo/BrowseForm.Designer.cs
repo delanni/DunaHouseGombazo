@@ -28,22 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.searchGroupBox = new System.Windows.Forms.GroupBox();
+            this.keywordHintLabel = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.tbKeywordValue = new System.Windows.Forms.TextBox();
+            this.tbKeyword = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.searchButton = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.tbRefid = new System.Windows.Forms.TextBox();
+            this.cbRoomsMax = new System.Windows.Forms.ComboBox();
+            this.cbRoomsMin = new System.Windows.Forms.ComboBox();
+            this.tbSizeMin = new System.Windows.Forms.TextBox();
+            this.tbSizeMax = new System.Windows.Forms.TextBox();
+            this.tbPriceMax = new System.Windows.Forms.TextBox();
+            this.tbPriceMin = new System.Windows.Forms.TextBox();
+            this.tbLongName = new System.Windows.Forms.TextBox();
+            this.cbHeating = new System.Windows.Forms.ComboBox();
+            this.cbConditioning = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.cbHasLift = new System.Windows.Forms.CheckBox();
+            this.cbHasBalcony = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -51,28 +66,50 @@
             this.label1 = new System.Windows.Forms.Label();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.resultListView = new System.Windows.Forms.ListView();
+            this.resultGridView = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.editButton = new System.Windows.Forms.Button();
             this.viewButton = new System.Windows.Forms.Button();
             this.importButton = new System.Windows.Forms.Button();
             this.exportButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.searchButton = new System.Windows.Forms.Button();
+            this.tbAddress = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.houseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.searchGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.resultGridView)).BeginInit();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.houseBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -84,7 +121,7 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.groupBox2);
+            this.splitContainer1.Panel1.Controls.Add(this.searchGroupBox);
             // 
             // splitContainer1.Panel2
             // 
@@ -93,38 +130,152 @@
             this.splitContainer1.SplitterDistance = 336;
             this.splitContainer1.TabIndex = 0;
             // 
-            // groupBox2
+            // searchGroupBox
             // 
-            this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.searchButton);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.textBox4);
-            this.groupBox2.Controls.Add(this.comboBox3);
-            this.groupBox2.Controls.Add(this.textBox3);
-            this.groupBox2.Controls.Add(this.textBox6);
-            this.groupBox2.Controls.Add(this.textBox5);
-            this.groupBox2.Controls.Add(this.textBox2);
-            this.groupBox2.Controls.Add(this.textBox1);
-            this.groupBox2.Controls.Add(this.comboBox2);
-            this.groupBox2.Controls.Add(this.comboBox1);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.checkBox2);
-            this.groupBox2.Controls.Add(this.checkBox1);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(0, 0);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(336, 662);
-            this.groupBox2.TabIndex = 0;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Search details";
+            this.searchGroupBox.Controls.Add(this.keywordHintLabel);
+            this.searchGroupBox.Controls.Add(this.label16);
+            this.searchGroupBox.Controls.Add(this.label18);
+            this.searchGroupBox.Controls.Add(this.label17);
+            this.searchGroupBox.Controls.Add(this.tbKeywordValue);
+            this.searchGroupBox.Controls.Add(this.tbAddress);
+            this.searchGroupBox.Controls.Add(this.tbKeyword);
+            this.searchGroupBox.Controls.Add(this.label13);
+            this.searchGroupBox.Controls.Add(this.label12);
+            this.searchGroupBox.Controls.Add(this.label15);
+            this.searchGroupBox.Controls.Add(this.label11);
+            this.searchGroupBox.Controls.Add(this.label14);
+            this.searchGroupBox.Controls.Add(this.label10);
+            this.searchGroupBox.Controls.Add(this.label9);
+            this.searchGroupBox.Controls.Add(this.searchButton);
+            this.searchGroupBox.Controls.Add(this.label8);
+            this.searchGroupBox.Controls.Add(this.tbRefid);
+            this.searchGroupBox.Controls.Add(this.cbRoomsMax);
+            this.searchGroupBox.Controls.Add(this.cbRoomsMin);
+            this.searchGroupBox.Controls.Add(this.tbSizeMin);
+            this.searchGroupBox.Controls.Add(this.tbSizeMax);
+            this.searchGroupBox.Controls.Add(this.tbPriceMax);
+            this.searchGroupBox.Controls.Add(this.tbPriceMin);
+            this.searchGroupBox.Controls.Add(this.tbLongName);
+            this.searchGroupBox.Controls.Add(this.cbHeating);
+            this.searchGroupBox.Controls.Add(this.cbConditioning);
+            this.searchGroupBox.Controls.Add(this.label7);
+            this.searchGroupBox.Controls.Add(this.label6);
+            this.searchGroupBox.Controls.Add(this.cbHasLift);
+            this.searchGroupBox.Controls.Add(this.cbHasBalcony);
+            this.searchGroupBox.Controls.Add(this.label5);
+            this.searchGroupBox.Controls.Add(this.label4);
+            this.searchGroupBox.Controls.Add(this.label3);
+            this.searchGroupBox.Controls.Add(this.label2);
+            this.searchGroupBox.Controls.Add(this.label1);
+            this.searchGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.searchGroupBox.Location = new System.Drawing.Point(0, 0);
+            this.searchGroupBox.Name = "searchGroupBox";
+            this.searchGroupBox.Size = new System.Drawing.Size(336, 662);
+            this.searchGroupBox.TabIndex = 0;
+            this.searchGroupBox.TabStop = false;
+            this.searchGroupBox.Text = "Search details";
+            // 
+            // keywordHintLabel
+            // 
+            this.keywordHintLabel.AutoSize = true;
+            this.keywordHintLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.keywordHintLabel.Location = new System.Drawing.Point(148, 447);
+            this.keywordHintLabel.Name = "keywordHintLabel";
+            this.keywordHintLabel.Size = new System.Drawing.Size(117, 13);
+            this.keywordHintLabel.TabIndex = 15;
+            this.keywordHintLabel.Text = "Leave empty if not sure";
+            this.keywordHintLabel.Visible = false;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(23, 427);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(77, 13);
+            this.label16.TabIndex = 15;
+            this.label16.Text = "Keyword value";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(23, 394);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(85, 13);
+            this.label17.TabIndex = 14;
+            this.label17.Text = "Custom keyword";
+            // 
+            // tbKeywordValue
+            // 
+            this.tbKeywordValue.Location = new System.Drawing.Point(112, 424);
+            this.tbKeywordValue.Name = "tbKeywordValue";
+            this.tbKeywordValue.Size = new System.Drawing.Size(200, 20);
+            this.tbKeywordValue.TabIndex = 12;
+            this.tbKeywordValue.Enter += new System.EventHandler(this.tbKeywordValue_Enter);
+            this.tbKeywordValue.Leave += new System.EventHandler(this.tbKeywordValue_Leave);
+            // 
+            // tbKeyword
+            // 
+            this.tbKeyword.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.tbKeyword.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.tbKeyword.Location = new System.Drawing.Point(112, 391);
+            this.tbKeyword.Name = "tbKeyword";
+            this.tbKeyword.Size = new System.Drawing.Size(200, 20);
+            this.tbKeyword.TabIndex = 13;
+            this.tbKeyword.TextChanged += new System.EventHandler(this.tbKeyword_TextChanged);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(248, 192);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(55, 13);
+            this.label13.TabIndex = 11;
+            this.label13.Text = "sq. meters";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(248, 166);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(55, 13);
+            this.label12.TabIndex = 11;
+            this.label12.Text = "sq. meters";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(196, 230);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(16, 13);
+            this.label15.TabIndex = 11;
+            this.label15.Text = "to";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(109, 192);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(16, 13);
+            this.label11.TabIndex = 11;
+            this.label11.Text = "to";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(98, 230);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(27, 13);
+            this.label14.TabIndex = 10;
+            this.label14.Text = "from";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(109, 166);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(27, 13);
+            this.label10.TabIndex = 10;
+            this.label10.Text = "from";
             // 
             // label9
             // 
@@ -135,6 +286,17 @@
             this.label9.TabIndex = 11;
             this.label9.Text = "to";
             // 
+            // searchButton
+            // 
+            this.searchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.searchButton.Location = new System.Drawing.Point(16, 487);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(296, 41);
+            this.searchButton.TabIndex = 0;
+            this.searchButton.Text = "Search";
+            this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -144,69 +306,83 @@
             this.label8.TabIndex = 10;
             this.label8.Text = "from";
             // 
-            // textBox4
+            // tbRefid
             // 
-            this.textBox4.Location = new System.Drawing.Point(112, 26);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 9;
+            this.tbRefid.Location = new System.Drawing.Point(112, 26);
+            this.tbRefid.Name = "tbRefid";
+            this.tbRefid.Size = new System.Drawing.Size(100, 20);
+            this.tbRefid.TabIndex = 9;
             // 
-            // comboBox3
+            // cbRoomsMax
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(121, 227);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 21);
-            this.comboBox3.TabIndex = 8;
+            this.cbRoomsMax.FormattingEnabled = true;
+            this.cbRoomsMax.Location = new System.Drawing.Point(218, 227);
+            this.cbRoomsMax.Name = "cbRoomsMax";
+            this.cbRoomsMax.Size = new System.Drawing.Size(48, 21);
+            this.cbRoomsMax.TabIndex = 8;
             // 
-            // textBox3
+            // cbRoomsMin
             // 
-            this.textBox3.Location = new System.Drawing.Point(142, 159);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 7;
+            this.cbRoomsMin.FormattingEnabled = true;
+            this.cbRoomsMin.Location = new System.Drawing.Point(131, 227);
+            this.cbRoomsMin.Name = "cbRoomsMin";
+            this.cbRoomsMin.Size = new System.Drawing.Size(48, 21);
+            this.cbRoomsMin.TabIndex = 8;
             // 
-            // textBox5
+            // tbSizeMin
             // 
-            this.textBox5.Location = new System.Drawing.Point(142, 115);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 7;
+            this.tbSizeMin.Location = new System.Drawing.Point(142, 159);
+            this.tbSizeMin.Name = "tbSizeMin";
+            this.tbSizeMin.Size = new System.Drawing.Size(100, 20);
+            this.tbSizeMin.TabIndex = 7;
             // 
-            // textBox2
+            // tbSizeMax
             // 
-            this.textBox2.Location = new System.Drawing.Point(142, 89);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 7;
+            this.tbSizeMax.Location = new System.Drawing.Point(142, 185);
+            this.tbSizeMax.Name = "tbSizeMax";
+            this.tbSizeMax.Size = new System.Drawing.Size(100, 20);
+            this.tbSizeMax.TabIndex = 7;
             // 
-            // textBox1
+            // tbPriceMax
             // 
-            this.textBox1.Location = new System.Drawing.Point(112, 58);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(200, 20);
-            this.textBox1.TabIndex = 6;
+            this.tbPriceMax.Location = new System.Drawing.Point(142, 115);
+            this.tbPriceMax.Name = "tbPriceMax";
+            this.tbPriceMax.Size = new System.Drawing.Size(100, 20);
+            this.tbPriceMax.TabIndex = 7;
             // 
-            // comboBox2
+            // tbPriceMin
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(112, 340);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 5;
+            this.tbPriceMin.Location = new System.Drawing.Point(142, 89);
+            this.tbPriceMin.Name = "tbPriceMin";
+            this.tbPriceMin.Size = new System.Drawing.Size(100, 20);
+            this.tbPriceMin.TabIndex = 7;
             // 
-            // comboBox1
+            // tbLongName
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(112, 313);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 5;
+            this.tbLongName.Location = new System.Drawing.Point(112, 58);
+            this.tbLongName.Name = "tbLongName";
+            this.tbLongName.Size = new System.Drawing.Size(200, 20);
+            this.tbLongName.TabIndex = 6;
+            // 
+            // cbHeating
+            // 
+            this.cbHeating.FormattingEnabled = true;
+            this.cbHeating.Location = new System.Drawing.Point(112, 358);
+            this.cbHeating.Name = "cbHeating";
+            this.cbHeating.Size = new System.Drawing.Size(121, 21);
+            this.cbHeating.TabIndex = 5;
+            // 
+            // cbConditioning
+            // 
+            this.cbConditioning.Location = new System.Drawing.Point(112, 331);
+            this.cbConditioning.Name = "cbConditioning";
+            this.cbConditioning.Size = new System.Drawing.Size(121, 21);
+            this.cbConditioning.TabIndex = 5;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(13, 343);
+            this.label7.Location = new System.Drawing.Point(13, 361);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(44, 13);
             this.label7.TabIndex = 4;
@@ -215,31 +391,31 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(13, 316);
+            this.label6.Location = new System.Drawing.Point(13, 334);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(51, 13);
             this.label6.TabIndex = 3;
             this.label6.Text = "Condition";
             // 
-            // checkBox2
+            // cbHasLift
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(16, 268);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(40, 17);
-            this.checkBox2.TabIndex = 2;
-            this.checkBox2.Text = "Lift";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.cbHasLift.AutoSize = true;
+            this.cbHasLift.Location = new System.Drawing.Point(16, 268);
+            this.cbHasLift.Name = "cbHasLift";
+            this.cbHasLift.Size = new System.Drawing.Size(40, 17);
+            this.cbHasLift.TabIndex = 2;
+            this.cbHasLift.Text = "Lift";
+            this.cbHasLift.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // cbHasBalcony
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(84, 268);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(64, 17);
-            this.checkBox1.TabIndex = 2;
-            this.checkBox1.Text = "Balcony";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.cbHasBalcony.AutoSize = true;
+            this.cbHasBalcony.Location = new System.Drawing.Point(84, 268);
+            this.cbHasBalcony.Name = "cbHasBalcony";
+            this.cbHasBalcony.Size = new System.Drawing.Size(64, 17);
+            this.cbHasBalcony.TabIndex = 2;
+            this.cbHasBalcony.Text = "Balcony";
+            this.cbHasBalcony.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -307,7 +483,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.resultListView);
+            this.groupBox1.Controls.Add(this.resultGridView);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
@@ -316,15 +492,43 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Results";
             // 
-            // resultListView
+            // resultGridView
             // 
-            this.resultListView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.resultListView.Location = new System.Drawing.Point(3, 16);
-            this.resultListView.Name = "resultListView";
-            this.resultListView.Size = new System.Drawing.Size(662, 566);
-            this.resultListView.TabIndex = 0;
-            this.resultListView.UseCompatibleStateImageBehavior = false;
-            this.resultListView.SelectedIndexChanged += new System.EventHandler(this.resultListViewSelectionChanged);
+            this.resultGridView.AllowUserToAddRows = false;
+            this.resultGridView.AllowUserToDeleteRows = false;
+            this.resultGridView.AutoGenerateColumns = false;
+            this.resultGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.resultGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn20,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn14,
+            this.dataGridViewTextBoxColumn13,
+            this.dataGridViewTextBoxColumn16,
+            this.dataGridViewTextBoxColumn15,
+            this.dataGridViewTextBoxColumn19,
+            this.dataGridViewTextBoxColumn10,
+            this.dataGridViewTextBoxColumn9,
+            this.dataGridViewTextBoxColumn11,
+            this.dataGridViewTextBoxColumn17,
+            this.dataGridViewTextBoxColumn18,
+            this.dataGridViewTextBoxColumn21,
+            this.dataGridViewTextBoxColumn22,
+            this.dataGridViewTextBoxColumn23,
+            this.dataGridViewTextBoxColumn24,
+            this.dataGridViewTextBoxColumn25,
+            this.dataGridViewTextBoxColumn26});
+            this.resultGridView.DataSource = this.houseBindingSource;
+            this.resultGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.resultGridView.Location = new System.Drawing.Point(3, 16);
+            this.resultGridView.Name = "resultGridView";
+            this.resultGridView.ReadOnly = true;
+            this.resultGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.resultGridView.Size = new System.Drawing.Size(662, 566);
+            this.resultGridView.TabIndex = 0;
+            this.resultGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.resultGridView_CellDoubleClick);
             // 
             // groupBox3
             // 
@@ -396,41 +600,174 @@
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
-            // label10
+            // tbAddress
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(109, 166);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(27, 13);
-            this.label10.TabIndex = 10;
-            this.label10.Text = "from";
+            this.tbAddress.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.tbAddress.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.tbAddress.Location = new System.Drawing.Point(112, 298);
+            this.tbAddress.Name = "tbAddress";
+            this.tbAddress.Size = new System.Drawing.Size(200, 20);
+            this.tbAddress.TabIndex = 13;
             // 
-            // label11
+            // label18
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(109, 192);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(16, 13);
-            this.label11.TabIndex = 11;
-            this.label11.Text = "to";
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(16, 301);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(88, 13);
+            this.label18.TabIndex = 14;
+            this.label18.Text = "Address contains";
             // 
-            // textBox6
+            // dataGridViewTextBoxColumn20
             // 
-            this.textBox6.Location = new System.Drawing.Point(142, 185);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 7;
+            this.dataGridViewTextBoxColumn20.DataPropertyName = "ReferenceId";
+            this.dataGridViewTextBoxColumn20.HeaderText = "ReferenceId";
+            this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
+            this.dataGridViewTextBoxColumn20.ReadOnly = true;
             // 
-            // searchButton
+            // dataGridViewTextBoxColumn4
             // 
-            this.searchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.searchButton.Location = new System.Drawing.Point(16, 384);
-            this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(296, 41);
-            this.searchButton.TabIndex = 0;
-            this.searchButton.Text = "Search";
-            this.searchButton.UseVisualStyleBackColor = true;
-            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "LongName";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "Description";
+            this.dataGridViewTextBoxColumn8.HeaderText = "Description";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "Price";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Price";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "Currency";
+            this.dataGridViewTextBoxColumn7.HeaderText = "Currency";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn14
+            // 
+            this.dataGridViewTextBoxColumn14.DataPropertyName = "NumberOfRooms";
+            this.dataGridViewTextBoxColumn14.HeaderText = "NumberOfRooms";
+            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
+            this.dataGridViewTextBoxColumn14.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.DataPropertyName = "Size";
+            this.dataGridViewTextBoxColumn13.HeaderText = "Size";
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            this.dataGridViewTextBoxColumn13.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn16
+            // 
+            this.dataGridViewTextBoxColumn16.DataPropertyName = "Lift";
+            this.dataGridViewTextBoxColumn16.HeaderText = "Lift";
+            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
+            this.dataGridViewTextBoxColumn16.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn15
+            // 
+            this.dataGridViewTextBoxColumn15.DataPropertyName = "Balcony";
+            this.dataGridViewTextBoxColumn15.HeaderText = "Balcony";
+            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
+            this.dataGridViewTextBoxColumn15.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn19
+            // 
+            this.dataGridViewTextBoxColumn19.DataPropertyName = "Floor";
+            this.dataGridViewTextBoxColumn19.HeaderText = "Floor";
+            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
+            this.dataGridViewTextBoxColumn19.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "LastEditedBy";
+            this.dataGridViewTextBoxColumn10.HeaderText = "LastEditedBy";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "CreatedBy";
+            this.dataGridViewTextBoxColumn9.HeaderText = "CreatedBy";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "RepresentativeId";
+            this.dataGridViewTextBoxColumn11.HeaderText = "RepresentativeId";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn17
+            // 
+            this.dataGridViewTextBoxColumn17.DataPropertyName = "Condition";
+            this.dataGridViewTextBoxColumn17.HeaderText = "Condition";
+            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
+            this.dataGridViewTextBoxColumn17.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn18
+            // 
+            this.dataGridViewTextBoxColumn18.DataPropertyName = "Heating";
+            this.dataGridViewTextBoxColumn18.HeaderText = "Heating";
+            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
+            this.dataGridViewTextBoxColumn18.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn21
+            // 
+            this.dataGridViewTextBoxColumn21.DataPropertyName = "ConditionType";
+            this.dataGridViewTextBoxColumn21.HeaderText = "ConditionType";
+            this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
+            this.dataGridViewTextBoxColumn21.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn22
+            // 
+            this.dataGridViewTextBoxColumn22.DataPropertyName = "Extras";
+            this.dataGridViewTextBoxColumn22.HeaderText = "Extras";
+            this.dataGridViewTextBoxColumn22.Name = "dataGridViewTextBoxColumn22";
+            this.dataGridViewTextBoxColumn22.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn23
+            // 
+            this.dataGridViewTextBoxColumn23.DataPropertyName = "HeatingType";
+            this.dataGridViewTextBoxColumn23.HeaderText = "HeatingType";
+            this.dataGridViewTextBoxColumn23.Name = "dataGridViewTextBoxColumn23";
+            this.dataGridViewTextBoxColumn23.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn24
+            // 
+            this.dataGridViewTextBoxColumn24.DataPropertyName = "CreatedByUser";
+            this.dataGridViewTextBoxColumn24.HeaderText = "CreatedByUser";
+            this.dataGridViewTextBoxColumn24.Name = "dataGridViewTextBoxColumn24";
+            this.dataGridViewTextBoxColumn24.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn25
+            // 
+            this.dataGridViewTextBoxColumn25.DataPropertyName = "LastEditedByUser";
+            this.dataGridViewTextBoxColumn25.HeaderText = "LastEditedByUser";
+            this.dataGridViewTextBoxColumn25.Name = "dataGridViewTextBoxColumn25";
+            this.dataGridViewTextBoxColumn25.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn26
+            // 
+            this.dataGridViewTextBoxColumn26.DataPropertyName = "RepresentedByUser";
+            this.dataGridViewTextBoxColumn26.HeaderText = "RepresentedByUser";
+            this.dataGridViewTextBoxColumn26.Name = "dataGridViewTextBoxColumn26";
+            this.dataGridViewTextBoxColumn26.ReadOnly = true;
+            // 
+            // houseBindingSource
+            // 
+            this.houseBindingSource.DataSource = typeof(DunaHouseGombazo.House);
             // 
             // BrowseForm
             // 
@@ -444,18 +781,21 @@
             this.Text = "Browse";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BrowseForm_FormClosing);
+            this.Load += new System.EventHandler(this.BrowseForm_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.searchGroupBox.ResumeLayout(false);
+            this.searchGroupBox.PerformLayout();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.resultGridView)).EndInit();
             this.groupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.houseBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -465,9 +805,8 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox searchGroupBox;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.ListView resultListView;
         private System.Windows.Forms.Button viewButton;
         private System.Windows.Forms.Button importButton;
         private System.Windows.Forms.Button exportButton;
@@ -478,23 +817,60 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox cbHasLift;
+        private System.Windows.Forms.CheckBox cbHasBalcony;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox tbRefid;
+        private System.Windows.Forms.ComboBox cbRoomsMin;
+        private System.Windows.Forms.TextBox tbSizeMin;
+        private System.Windows.Forms.TextBox tbPriceMax;
+        private System.Windows.Forms.TextBox tbPriceMin;
+        private System.Windows.Forms.TextBox tbLongName;
+        private System.Windows.Forms.ComboBox cbHeating;
+        private System.Windows.Forms.ComboBox cbConditioning;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button searchButton;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox tbSizeMax;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ComboBox cbRoomsMax;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox tbKeywordValue;
+        private System.Windows.Forms.TextBox tbKeyword;
+        private System.Windows.Forms.Label keywordHintLabel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private System.Windows.Forms.BindingSource houseBindingSource;
+        private System.Windows.Forms.DataGridView resultGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn21;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn22;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn23;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn24;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn25;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn26;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox tbAddress;
     }
 }

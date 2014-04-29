@@ -166,5 +166,27 @@ namespace DunaHouseGombazo
             openUser(-1);
         }
 
+        private void importButton_Click(object sender, EventArgs e)
+        {
+            if (User.CanImport)
+            {
+                using(var db = new DHSEntities()){
+                    JSONImport.Dialogs.Import(db);
+                }
+            }
+        }
+
+        private void exportButton_Click(object sender, EventArgs e)
+        {
+            if (User.CanExport)
+            {
+                using (var db = new DHSEntities())
+                {
+                    var housesToExport = db.House.ToList();
+                    JSONImport.Dialogs.Export(housesToExport);
+                }
+            }
+        }
+
     }
 }

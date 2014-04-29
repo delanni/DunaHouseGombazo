@@ -25,8 +25,11 @@ namespace DunaHouseGombazo
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<User> User { get; set; }
-        public DbSet<House> House { get; set; }
+        public DbSet<Conditioning> Conditioning { get; set; }
         public DbSet<Extra> Extra { get; set; }
+        public DbSet<Heating> Heating { get; set; }
+        public DbSet<House> House { get; set; }
+        public DbSet<User> User { get; set; }
+        public DbSet<Image> Image { get; set; }
     }
 }

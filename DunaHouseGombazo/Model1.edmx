@@ -6,9 +6,16 @@
     <edmx:StorageModels>
     <Schema Namespace="DHSModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="DHSModelStoreContainer">
+          <EntitySet Name="Conditioning" EntityType="DHSModel.Store.Conditioning" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Extra" EntityType="DHSModel.Store.Extra" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Heating" EntityType="DHSModel.Store.Heating" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="House" EntityType="DHSModel.Store.House" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Image" EntityType="DHSModel.Store.Image" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="User" EntityType="DHSModel.Store.User" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Condition" Association="DHSModel.Store.FK_Condition">
+            <End Role="Conditioning" EntitySet="Conditioning" />
+            <End Role="House" EntitySet="House" />
+          </AssociationSet>
           <AssociationSet Name="FK_CreatedBy_to_User" Association="DHSModel.Store.FK_CreatedBy_to_User">
             <End Role="User" EntitySet="User" />
             <End Role="House" EntitySet="House" />
@@ -16,6 +23,14 @@
           <AssociationSet Name="FK_Extra_To_House" Association="DHSModel.Store.FK_Extra_To_House">
             <End Role="House" EntitySet="House" />
             <End Role="Extra" EntitySet="Extra" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Heating" Association="DHSModel.Store.FK_Heating">
+            <End Role="Heating" EntitySet="Heating" />
+            <End Role="House" EntitySet="House" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Image_to_House" Association="DHSModel.Store.FK_Image_to_House">
+            <End Role="House" EntitySet="House" />
+            <End Role="Image" EntitySet="Image" />
           </AssociationSet>
           <AssociationSet Name="FK_LastEditedBy_to_User" Association="DHSModel.Store.FK_LastEditedBy_to_User">
             <End Role="User" EntitySet="User" />
@@ -26,6 +41,13 @@
             <End Role="House" EntitySet="House" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Conditioning">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TextForm" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Extra">
           <Key>
             <PropertyRef Name="Id" />
@@ -36,20 +58,43 @@
           <Property Name="Value" Type="nvarchar" MaxLength="50" />
           <Property Name="Type" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="Heating">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TextForm" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="House">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="SiteId" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ReferenceId" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="LongName" Type="nvarchar" Nullable="false" MaxLength="100" />
           <Property Name="FullUrl" Type="nvarchar" Nullable="false" MaxLength="200" />
           <Property Name="Price" Type="bigint" Nullable="false" />
           <Property Name="Currency" Type="nchar" Nullable="false" MaxLength="10" />
           <Property Name="Description" Type="nvarchar(max)" />
-          <Property Name="CreatedBy" Type="int" />
-          <Property Name="LastEditedBy" Type="int" />
-          <Property Name="RepresentativeId" Type="int" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="LastEditedBy" Type="int" Nullable="false" />
+          <Property Name="RepresentativeId" Type="int" Nullable="false" />
+          <Property Name="Size" Type="int" />
+          <Property Name="NumberOfRooms" Type="int" />
+          <Property Name="Balcony" Type="bit" />
+          <Property Name="Lift" Type="bit" />
+          <Property Name="Condition" Type="int" />
+          <Property Name="Heating" Type="int" />
+          <Property Name="Floor" Type="int" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="ImageUrl" Type="nvarchar" MaxLength="500" />
+          <Property Name="HouseId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -67,8 +112,20 @@
           <Property Name="Phone" Type="nvarchar" MaxLength="50" />
           <Property Name="IsAdmin" Type="bit" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Condition">
+          <End Role="Conditioning" Type="DHSModel.Store.Conditioning" Multiplicity="0..1" />
+          <End Role="House" Type="DHSModel.Store.House" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conditioning">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="House">
+              <PropertyRef Name="Condition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_CreatedBy_to_User">
-          <End Role="User" Type="DHSModel.Store.User" Multiplicity="0..1" />
+          <End Role="User" Type="DHSModel.Store.User" Multiplicity="1" />
           <End Role="House" Type="DHSModel.Store.House" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
@@ -91,8 +148,32 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Heating">
+          <End Role="Heating" Type="DHSModel.Store.Heating" Multiplicity="0..1" />
+          <End Role="House" Type="DHSModel.Store.House" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Heating">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="House">
+              <PropertyRef Name="Heating" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Image_to_House">
+          <End Role="House" Type="DHSModel.Store.House" Multiplicity="1" />
+          <End Role="Image" Type="DHSModel.Store.Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="House">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Image">
+              <PropertyRef Name="HouseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_LastEditedBy_to_User">
-          <End Role="User" Type="DHSModel.Store.User" Multiplicity="0..1" />
+          <End Role="User" Type="DHSModel.Store.User" Multiplicity="1" />
           <End Role="House" Type="DHSModel.Store.House" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
@@ -104,7 +185,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Representative_to_User">
-          <End Role="User" Type="DHSModel.Store.User" Multiplicity="0..1" />
+          <End Role="User" Type="DHSModel.Store.User" Multiplicity="1" />
           <End Role="House" Type="DHSModel.Store.House" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
@@ -120,8 +201,23 @@
     <edmx:ConceptualModels>
       <Schema Namespace="DHSModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="DHSEntities" p1:LazyLoadingEnabled="true">
-          <EntitySet Name="User" EntityType="DHSModel.User" />
+          <EntitySet Name="Conditioning" EntityType="DHSModel.Conditioning" />
+          <EntitySet Name="Extra" EntityType="DHSModel.Extra" />
+          <EntitySet Name="Heating" EntityType="DHSModel.Heating" />
           <EntitySet Name="House" EntityType="DHSModel.House" />
+          <EntitySet Name="User" EntityType="DHSModel.User" />
+          <AssociationSet Name="FK_Condition" Association="DHSModel.FK_Condition">
+            <End Role="Conditioning" EntitySet="Conditioning" />
+            <End Role="House" EntitySet="House" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Extra_To_House" Association="DHSModel.FK_Extra_To_House">
+            <End Role="House" EntitySet="House" />
+            <End Role="Extra" EntitySet="Extra" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Heating" Association="DHSModel.FK_Heating">
+            <End Role="Heating" EntitySet="Heating" />
+            <End Role="House" EntitySet="House" />
+          </AssociationSet>
           <AssociationSet Name="FK_CreatedBy_to_User" Association="DHSModel.FK_CreatedBy_to_User">
             <End Role="User" EntitySet="User" />
             <End Role="House" EntitySet="House" />
@@ -130,89 +226,104 @@
             <End Role="User" EntitySet="User" />
             <End Role="House" EntitySet="House" />
           </AssociationSet>
-          <EntitySet Name="Extra" EntityType="DHSModel.Extra" />
-          <AssociationSet Name="FK_Extra_To_House" Association="DHSModel.FK_Extra_To_House">
-            <End Role="House" EntitySet="House" />
-            <End Role="Extra" EntitySet="Extra" />
-          </AssociationSet>
           <AssociationSet Name="FK_Representative_to_User" Association="DHSModel.FK_Representative_to_User">
             <End Role="User" EntitySet="User" />
             <End Role="House" EntitySet="House" />
           </AssociationSet>
+          <EntitySet Name="Image" EntityType="DHSModel.Image" />
+          <AssociationSet Name="FK_Image_to_House" Association="DHSModel.FK_Image_to_House">
+            <End Role="House" EntitySet="House" />
+            <End Role="Image" EntitySet="Image" />
+          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="User">
+        <EntityType Name="Conditioning">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="FullName" Type="String" MaxLength="300" Unicode="true" FixedLength="false" />
-          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Type="Boolean" Name="CanEdit" Nullable="false" />
-          <Property Type="Boolean" Name="CanView" Nullable="false" />
-          <Property Type="Boolean" Name="CanExport" Nullable="false" />
-          <Property Type="Boolean" Name="CanImport" Nullable="false" />
-          <Property Type="String" Name="Email" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Phone" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="HousesCreated" Relationship="DHSModel.FK_CreatedBy_to_User" FromRole="User" ToRole="House" />
-          <NavigationProperty Name="HousesLastEdited" Relationship="DHSModel.FK_LastEditedBy_to_User" FromRole="User" ToRole="House" />
-          <NavigationProperty Name="HousesRepresented" Relationship="DHSModel.FK_Representative_to_User" FromRole="User" ToRole="House" />
-          <Property Type="Boolean" Name="IsAdmin" Nullable="false" />
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="TextForm" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="House" Relationship="DHSModel.FK_Condition" FromRole="Conditioning" ToRole="House" />
         </EntityType>
-        <EntityType Name="House">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" />
-          <Property Type="String" Name="SiteId" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="LongName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="FullUrl" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Type="Int64" Name="Price" Nullable="false" />
-          <Property Type="String" Name="Currency" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="CreatedBy" />
-          <Property Type="Int32" Name="LastEditedBy" />
-          <NavigationProperty Name="CreatedByUser" Relationship="DHSModel.FK_CreatedBy_to_User" FromRole="House" ToRole="User" />
-          <NavigationProperty Name="LastEditedByUser" Relationship="DHSModel.FK_LastEditedBy_to_User" FromRole="House" ToRole="User" />
-          <NavigationProperty Name="Extras" Relationship="DHSModel.FK_Extra_To_House" FromRole="House" ToRole="Extra" />
-          <Property Type="Int32" Name="RepresentativeId" />
-          <NavigationProperty Name="Representative" Relationship="DHSModel.FK_Representative_to_User" FromRole="House" ToRole="User" />
-        </EntityType>
-        <Association Name="FK_CreatedBy_to_User">
-          <End Type="DHSModel.User" Role="User" Multiplicity="0..1" />
-          <End Type="DHSModel.House" Role="House" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="House">
-              <PropertyRef Name="CreatedBy" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_LastEditedBy_to_User">
-          <End Type="DHSModel.User" Role="User" Multiplicity="0..1" />
-          <End Type="DHSModel.House" Role="House" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="House">
-              <PropertyRef Name="LastEditedBy" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Extra">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="HouseId" Nullable="false" />
           <Property Type="String" Name="Name" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Value" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Type" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="House" Relationship="DHSModel.FK_Extra_To_House" FromRole="Extra" ToRole="House" />
         </EntityType>
+        <EntityType Name="Heating">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="TextForm" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="House" Relationship="DHSModel.FK_Heating" FromRole="Heating" ToRole="House" />
+        </EntityType>
+        <EntityType Name="House">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="LongName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FullUrl" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="Price" Nullable="false" />
+          <Property Type="String" Name="Currency" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="Int32" Name="LastEditedBy" Nullable="false" />
+          <Property Type="Int32" Name="RepresentativeId" Nullable="false" />
+          <Property Type="Int32" Name="Size" />
+          <Property Type="Int32" Name="NumberOfRooms" />
+          <Property Type="Boolean" Name="Balcony" />
+          <Property Type="Boolean" Name="Lift" />
+          <Property Type="Int32" Name="Condition" />
+          <Property Type="Int32" Name="Heating" />
+          <Property Type="Int32" Name="Floor" />
+          <NavigationProperty Name="ConditionType" Relationship="DHSModel.FK_Condition" FromRole="House" ToRole="Conditioning" />
+          <NavigationProperty Name="Extras" Relationship="DHSModel.FK_Extra_To_House" FromRole="House" ToRole="Extra" />
+          <NavigationProperty Name="HeatingType" Relationship="DHSModel.FK_Heating" FromRole="House" ToRole="Heating" />
+          <NavigationProperty Name="CreatedByUser" Relationship="DHSModel.FK_CreatedBy_to_User" FromRole="House" ToRole="User" />
+          <NavigationProperty Name="LastEditedByUser" Relationship="DHSModel.FK_LastEditedBy_to_User" FromRole="House" ToRole="User" />
+          <NavigationProperty Name="RepresentedByUser" Relationship="DHSModel.FK_Representative_to_User" FromRole="House" ToRole="User" />
+          <Property Type="String" Name="ReferenceId" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Image" Relationship="DHSModel.FK_Image_to_House" FromRole="House" ToRole="Image" />
+          <Property Type="String" Name="Address" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FullName" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="CanEdit" Nullable="false" />
+          <Property Type="Boolean" Name="CanView" Nullable="false" />
+          <Property Type="Boolean" Name="CanExport" Nullable="false" />
+          <Property Type="Boolean" Name="CanImport" Nullable="false" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Phone" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsAdmin" Nullable="false" />
+          <NavigationProperty Name="HousesCreated" Relationship="DHSModel.FK_CreatedBy_to_User" FromRole="User" ToRole="House" />
+          <NavigationProperty Name="HousesLastEdited" Relationship="DHSModel.FK_LastEditedBy_to_User" FromRole="User" ToRole="House" />
+          <NavigationProperty Name="HousesRepresented" Relationship="DHSModel.FK_Representative_to_User" FromRole="User" ToRole="House" />
+        </EntityType>
+        <Association Name="FK_Condition">
+          <End Type="DHSModel.Conditioning" Role="Conditioning" Multiplicity="0..1" />
+          <End Type="DHSModel.House" Role="House" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conditioning">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="House">
+              <PropertyRef Name="Condition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Extra_To_House">
           <End Type="DHSModel.House" Role="House" Multiplicity="1" />
           <End Type="DHSModel.Extra" Role="Extra" Multiplicity="*" />
@@ -225,8 +336,44 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Heating">
+          <End Type="DHSModel.Heating" Role="Heating" Multiplicity="0..1" />
+          <End Type="DHSModel.House" Role="House" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Heating">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="House">
+              <PropertyRef Name="Heating" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CreatedBy_to_User">
+          <End Type="DHSModel.User" Role="User" Multiplicity="1" />
+          <End Type="DHSModel.House" Role="House" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="House">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LastEditedBy_to_User">
+          <End Type="DHSModel.User" Role="User" Multiplicity="1" />
+          <End Type="DHSModel.House" Role="House" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="House">
+              <PropertyRef Name="LastEditedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Representative_to_User">
-          <End Type="DHSModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="DHSModel.User" Role="User" Multiplicity="1" />
           <End Type="DHSModel.House" Role="House" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
@@ -237,41 +384,37 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="ImageUrl" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="HouseId" Nullable="false" />
+          <NavigationProperty Name="House" Relationship="DHSModel.FK_Image_to_House" FromRole="Image" ToRole="House" />
+        </EntityType>
+        <Association Name="FK_Image_to_House">
+          <End Type="DHSModel.House" Role="House" Multiplicity="1" />
+          <End Type="DHSModel.Image" Role="Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="House">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Image">
+              <PropertyRef Name="HouseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="DHSModelStoreContainer" CdmEntityContainer="DHSEntities">
-          <EntitySetMapping Name="User">
-            <EntityTypeMapping TypeName="DHSModel.User">
-              <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="CanImport" ColumnName="CanImport" />
-                <ScalarProperty Name="CanExport" ColumnName="CanExport" />
-                <ScalarProperty Name="CanView" ColumnName="CanView" />
-                <ScalarProperty Name="CanEdit" ColumnName="CanEdit" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="FullName" ColumnName="FullName" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="House">
-            <EntityTypeMapping TypeName="DHSModel.House">
-              <MappingFragment StoreEntitySet="House">
-                <ScalarProperty Name="RepresentativeId" ColumnName="RepresentativeId" />
-                <ScalarProperty Name="LastEditedBy" ColumnName="LastEditedBy" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Currency" ColumnName="Currency" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="FullUrl" ColumnName="FullUrl" />
-                <ScalarProperty Name="LongName" ColumnName="LongName" />
-                <ScalarProperty Name="SiteId" ColumnName="SiteId" />
+          <EntitySetMapping Name="Conditioning">
+            <EntityTypeMapping TypeName="DHSModel.Conditioning">
+              <MappingFragment StoreEntitySet="Conditioning">
+                <ScalarProperty Name="TextForm" ColumnName="TextForm" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -283,6 +426,64 @@
                 <ScalarProperty Name="Value" ColumnName="Value" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="HouseId" ColumnName="HouseId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Heating">
+            <EntityTypeMapping TypeName="DHSModel.Heating">
+              <MappingFragment StoreEntitySet="Heating">
+                <ScalarProperty Name="TextForm" ColumnName="TextForm" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="House">
+            <EntityTypeMapping TypeName="DHSModel.House">
+              <MappingFragment StoreEntitySet="House">
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="ReferenceId" ColumnName="ReferenceId" />
+                <ScalarProperty Name="Floor" ColumnName="Floor" />
+                <ScalarProperty Name="Heating" ColumnName="Heating" />
+                <ScalarProperty Name="Condition" ColumnName="Condition" />
+                <ScalarProperty Name="Lift" ColumnName="Lift" />
+                <ScalarProperty Name="Balcony" ColumnName="Balcony" />
+                <ScalarProperty Name="NumberOfRooms" ColumnName="NumberOfRooms" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="RepresentativeId" ColumnName="RepresentativeId" />
+                <ScalarProperty Name="LastEditedBy" ColumnName="LastEditedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="FullUrl" ColumnName="FullUrl" />
+                <ScalarProperty Name="LongName" ColumnName="LongName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="DHSModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CanImport" ColumnName="CanImport" />
+                <ScalarProperty Name="CanExport" ColumnName="CanExport" />
+                <ScalarProperty Name="CanView" ColumnName="CanView" />
+                <ScalarProperty Name="CanEdit" ColumnName="CanEdit" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Image">
+            <EntityTypeMapping TypeName="DHSModel.Image">
+              <MappingFragment StoreEntitySet="Image">
+                <ScalarProperty Name="HouseId" ColumnName="HouseId" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -50,12 +50,15 @@
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -78,6 +81,9 @@
     <Compile Include="BrowseForm.Designer.cs">
       <DependentUpon>BrowseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Conditioning.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="DashboardForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,9 +93,25 @@
     <Compile Include="Extra.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Heating.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers.cs" />
     <Compile Include="House.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="HouseDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HouseDetailsForm.Designer.cs">
+      <DependentUpon>HouseDetailsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Image.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JSONImport\Dialogs.cs" />
+    <Compile Include="JSONImport\HouseJson.cs" />
+    <Compile Include="JSONImport\JSONMaster.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +154,9 @@
     <EmbeddedResource Include="DashboardForm.resx">
       <DependentUpon>DashboardForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="HouseDetailsForm.resx">
+      <DependentUpon>HouseDetailsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -168,6 +193,7 @@
     <None Include="Properties\DataSources\Extra.datasource" />
     <None Include="Properties\DataSources\House.datasource" />
     <None Include="Properties\DataSources\User.datasource" />
+    <None Include="Properties\DataSources\UserViewForm.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -210,10 +236,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="JSONImport\" />
-    <Folder Include="Properties\DataSources\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

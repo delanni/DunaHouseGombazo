@@ -41,6 +41,7 @@
             System.Windows.Forms.Label fullname;
             System.Windows.Forms.Label isAdminLabel;
             System.Windows.Forms.Label userNameLabel;
+            this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.canEditCheckBox = new System.Windows.Forms.CheckBox();
             this.canExportCheckBox = new System.Windows.Forms.CheckBox();
             this.canImportCheckBox = new System.Windows.Forms.CheckBox();
@@ -54,7 +55,7 @@
             this.isAdminCheckBox = new System.Windows.Forms.CheckBox();
             this.deleteButton = new System.Windows.Forms.Button();
             this.userNameTextBox = new System.Windows.Forms.TextBox();
-            this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             canEditLabel = new System.Windows.Forms.Label();
             canExportLabel = new System.Windows.Forms.Label();
             canImportLabel = new System.Windows.Forms.Label();
@@ -163,6 +164,10 @@
             fullname.Size = new System.Drawing.Size(200, 20);
             fullname.TabIndex = 21;
             // 
+            // userBindingSource
+            // 
+            this.userBindingSource.DataSource = typeof(DunaHouseGombazo.User);
+            // 
             // isAdminLabel
             // 
             isAdminLabel.AutoSize = true;
@@ -171,6 +176,15 @@
             isAdminLabel.Size = new System.Drawing.Size(50, 13);
             isAdminLabel.TabIndex = 33;
             isAdminLabel.Text = "Is Admin:";
+            // 
+            // userNameLabel
+            // 
+            userNameLabel.AutoSize = true;
+            userNameLabel.Location = new System.Drawing.Point(40, 84);
+            userNameLabel.Name = "userNameLabel";
+            userNameLabel.Size = new System.Drawing.Size(63, 13);
+            userNameLabel.TabIndex = 35;
+            userNameLabel.Text = "User Name:";
             // 
             // canEditCheckBox
             // 
@@ -278,15 +292,6 @@
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
-            // userNameLabel
-            // 
-            userNameLabel.AutoSize = true;
-            userNameLabel.Location = new System.Drawing.Point(40, 84);
-            userNameLabel.Name = "userNameLabel";
-            userNameLabel.Size = new System.Drawing.Size(63, 13);
-            userNameLabel.TabIndex = 35;
-            userNameLabel.Text = "User Name:";
-            // 
             // userNameTextBox
             // 
             this.userNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userBindingSource, "UserName", true));
@@ -295,15 +300,24 @@
             this.userNameTextBox.Size = new System.Drawing.Size(104, 20);
             this.userNameTextBox.TabIndex = 1;
             // 
-            // userBindingSource
+            // checkBox1
             // 
-            this.userBindingSource.DataSource = typeof(DunaHouseGombazo.User);
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Font = new System.Drawing.Font("Wingdings", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.checkBox1.Location = new System.Drawing.Point(219, 133);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(43, 19);
+            this.checkBox1.TabIndex = 36;
+            this.checkBox1.Text = "$";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // UserViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(245, 394);
+            this.ClientSize = new System.Drawing.Size(274, 394);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(userNameLabel);
             this.Controls.Add(this.userNameTextBox);
             this.Controls.Add(isAdminLabel);
@@ -330,8 +344,8 @@
             this.Controls.Add(this.canViewCheckBox);
             this.Controls.Add(this.isAdminCheckBox);
             this.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userBindingSource, "UserName", true));
-            this.MaximumSize = new System.Drawing.Size(261, 433);
-            this.MinimumSize = new System.Drawing.Size(261, 433);
+            this.MaximumSize = new System.Drawing.Size(290, 433);
+            this.MinimumSize = new System.Drawing.Size(290, 433);
             this.Name = "UserViewForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -359,5 +373,6 @@
         private System.Windows.Forms.CheckBox isAdminCheckBox;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.TextBox userNameTextBox;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

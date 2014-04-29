@@ -17,22 +17,34 @@ namespace DunaHouseGombazo
         public House()
         {
             this.Extras = new HashSet<Extra>();
+            this.Image = new HashSet<Image>();
         }
     
         public int Id { get; set; }
-        public string SiteId { get; set; }
         public string LongName { get; set; }
         public string FullUrl { get; set; }
         public long Price { get; set; }
         public string Currency { get; set; }
         public string Description { get; set; }
-        public Nullable<int> CreatedBy { get; set; }
-        public Nullable<int> LastEditedBy { get; set; }
-        public Nullable<int> RepresentativeId { get; set; }
+        public int CreatedBy { get; set; }
+        public int LastEditedBy { get; set; }
+        public int RepresentativeId { get; set; }
+        public Nullable<int> Size { get; set; }
+        public Nullable<int> NumberOfRooms { get; set; }
+        public Nullable<bool> Balcony { get; set; }
+        public Nullable<bool> Lift { get; set; }
+        public Nullable<int> Condition { get; set; }
+        public Nullable<int> Heating { get; set; }
+        public Nullable<int> Floor { get; set; }
+        public string ReferenceId { get; set; }
+        public string Address { get; set; }
     
+        public virtual Conditioning ConditionType { get; set; }
+        public virtual ICollection<Extra> Extras { get; set; }
+        public virtual Heating HeatingType { get; set; }
         public virtual User CreatedByUser { get; set; }
         public virtual User LastEditedByUser { get; set; }
-        public virtual ICollection<Extra> Extras { get; set; }
-        public virtual User Representative { get; set; }
+        public virtual User RepresentedByUser { get; set; }
+        public virtual ICollection<Image> Image { get; set; }
     }
 }

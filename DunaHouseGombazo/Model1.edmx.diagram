@@ -4,14 +4,20 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="7a6dca5456da41799dc2634903fdfab4" Name="Diagram1">
-        <EntityTypeShape EntityType="DHSModel.User" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DHSModel.House" Width="1.5" PointX="3.625" PointY="0.875" />
+      <Diagram DiagramId="7a6dca5456da41799dc2634903fdfab4" Name="Diagram1" ZoomLevel="70">
+        <EntityTypeShape EntityType="DHSModel.Conditioning" Width="1.5" PointX="0.75" PointY="8.375" />
+        <EntityTypeShape EntityType="DHSModel.Extra" Width="1.5" PointX="5.25" PointY="3" />
+        <EntityTypeShape EntityType="DHSModel.Heating" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DHSModel.House" Width="1.5" PointX="3" PointY="2.5" />
+        <EntityTypeShape EntityType="DHSModel.User" Width="1.5" PointX="0.75" PointY="3.5" />
+        <AssociationConnector Association="DHSModel.FK_Condition" />
+        <AssociationConnector Association="DHSModel.FK_Extra_To_House" />
+        <AssociationConnector Association="DHSModel.FK_Heating" />
         <AssociationConnector Association="DHSModel.FK_CreatedBy_to_User" />
         <AssociationConnector Association="DHSModel.FK_LastEditedBy_to_User" />
-        <EntityTypeShape EntityType="DHSModel.Extra" Width="1.5" PointX="6" PointY="1" />
-        <AssociationConnector Association="DHSModel.FK_Extra_To_House" />
         <AssociationConnector Association="DHSModel.FK_Representative_to_User" />
+        <EntityTypeShape EntityType="DHSModel.Image" Width="1.5" PointX="5.25" PointY="6" />
+        <AssociationConnector Association="DHSModel.FK_Image_to_House" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

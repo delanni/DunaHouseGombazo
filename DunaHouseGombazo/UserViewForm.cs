@@ -128,5 +128,10 @@ namespace DunaHouseGombazo
                 this.Close();
             }
         }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            passwordTextBox.UseSystemPasswordChar = !checkBox1.Checked;
+        }
     }
 }
