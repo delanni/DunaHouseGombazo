@@ -188,5 +188,27 @@ namespace DunaHouseGombazo
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+           
+            House h = new House();
+            h.LastEditedBy = DashboardForm.User.Id;
+            h.LastEditedByUser = DashboardForm.User;
+            h.CreatedBy = DashboardForm.User.Id;
+            h.CreatedByUser = DashboardForm.User;
+            h.RepresentativeId = DashboardForm.User.Id;
+            h.RepresentedByUser = DashboardForm.User;
+            var house = new HouseDetailsForm(h, true);
+            var result = house.ShowDialog();
+            if (result == System.Windows.Forms.DialogResult.Yes || result == System.Windows.Forms.DialogResult.OK)
+            {
+                using (var db = new DHSEntities())
+                {
+                    db.House.Add(h);
+                    db.SaveChanges();
+                }
+            }
+        }
+
     }
 }

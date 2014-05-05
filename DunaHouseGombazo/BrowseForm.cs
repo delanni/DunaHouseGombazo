@@ -67,6 +67,9 @@ namespace DunaHouseGombazo
         {
             // view forms should be closed on closing so create a new instance every time
             openSelectedHouse(DashboardForm.User.CanEdit);
+            House h = new House();
+            var house = new HouseDetailsForm(h, true);
+            var result = house.ShowDialog();
         }
 
         private void importButton_Click(object sender, EventArgs e)
