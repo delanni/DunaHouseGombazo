@@ -63,8 +63,8 @@
             this.descriptionTextBox = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.extrasPanel = new System.Windows.Forms.Panel();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.imageBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.nextImageButton = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -90,6 +90,7 @@
             descriptionLabel = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageBindingSource)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.houseBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -408,17 +409,14 @@
             this.extrasPanel.Size = new System.Drawing.Size(406, 90);
             this.extrasPanel.TabIndex = 0;
             // 
-            // imageList1
-            // 
-            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            // 
             // pictureBox1
             // 
+            this.pictureBox1.DataBindings.Add(new System.Windows.Forms.Binding("ImageLocation", this.imageBindingSource, "ImageUrl", true));
+            this.pictureBox1.ImageLocation = "";
             this.pictureBox1.Location = new System.Drawing.Point(6, 19);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(388, 249);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 119;
             this.pictureBox1.TabStop = false;
             // 
@@ -444,6 +442,7 @@
             this.nextImageButton.TabIndex = 120;
             this.nextImageButton.Text = ">>";
             this.nextImageButton.UseVisualStyleBackColor = true;
+            this.nextImageButton.Click += new System.EventHandler(this.nextImageButton_Click);
             // 
             // button3
             // 
@@ -453,6 +452,7 @@
             this.button3.TabIndex = 120;
             this.button3.Text = "X";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -462,6 +462,7 @@
             this.button2.TabIndex = 120;
             this.button2.Text = "+";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // previousImageButton
             // 
@@ -471,6 +472,7 @@
             this.previousImageButton.TabIndex = 120;
             this.previousImageButton.Text = "<<";
             this.previousImageButton.UseVisualStyleBackColor = true;
+            this.previousImageButton.Click += new System.EventHandler(this.previousImageButton_Click);
             // 
             // heatingComboBox
             // 
@@ -543,6 +545,7 @@
             this.Load += new System.EventHandler(this.HouseDetailsForm_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageBindingSource)).EndInit();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.houseBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -571,7 +574,6 @@
         private System.Windows.Forms.LinkLabel representativeLinkLabel;
         private System.Windows.Forms.TextBox descriptionTextBox;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button nextImageButton;
@@ -581,5 +583,6 @@
         private System.Windows.Forms.Panel extrasPanel;
         private System.Windows.Forms.ComboBox heatingComboBox;
         private System.Windows.Forms.ComboBox conditionComboBox;
+        private System.Windows.Forms.BindingSource imageBindingSource;
     }
 }

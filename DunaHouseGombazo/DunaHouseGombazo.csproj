@@ -109,8 +109,15 @@
     <Compile Include="Image.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="ImagePrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImagePrompt.Designer.cs">
+      <DependentUpon>ImagePrompt.cs</DependentUpon>
+    </Compile>
     <Compile Include="JSONImport\Dialogs.cs" />
     <Compile Include="JSONImport\HouseJson.cs" />
+    <Compile Include="JSONImport\ImageJson.cs" />
     <Compile Include="JSONImport\JSONMaster.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -157,6 +164,9 @@
     <EmbeddedResource Include="HouseDetailsForm.resx">
       <DependentUpon>HouseDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ImagePrompt.resx">
+      <DependentUpon>ImagePrompt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -192,6 +202,7 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Extra.datasource" />
     <None Include="Properties\DataSources\House.datasource" />
+    <None Include="Properties\DataSources\Image.datasource" />
     <None Include="Properties\DataSources\User.datasource" />
     <None Include="Properties\DataSources\UserViewForm.datasource" />
     <None Include="Properties\Settings.settings">

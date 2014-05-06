@@ -30,6 +30,7 @@ namespace DunaHouseGombazo.JSONImport
             this.RepresentativeId = h.RepresentativeId;
             this.Size = h.Size;
             this.Address = h.Address;
+            this.Images = h.Image.Select(x=>new ImageJson(x));
         }
 
         public House ToHouse()
@@ -54,6 +55,7 @@ namespace DunaHouseGombazo.JSONImport
             t.RepresentativeId = h.RepresentativeId;
             t.Size = h.Size;
             t.Address = h.Address;
+            t.Image = h.Images.Select(x=>x.ToImage()).ToList();
             return t;
         }
 
@@ -92,6 +94,8 @@ namespace DunaHouseGombazo.JSONImport
         public int? Size { get; set; }
 
         public string Address { get; set; }
+
+        public IEnumerable<ImageJson> Images { get; set; }
     }
 
 }

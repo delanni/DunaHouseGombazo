@@ -37,10 +37,14 @@ namespace DunaHouseGombazo.JSONImport
 
 
             var houses = (new JSONImport.JSONMaster()).Import(dialog.FileName);
+            var users = db.User.ToList();
             if (houses.Any())
             {
                 foreach (var h in houses)
                 {
+                    h.CreatedByUser = users.SingleOrDefault(x => x.Id == h.CreatedBy)??users.FirstOrDefault();
+                    h.LastEditedByUser = users.SingleOrDefault(x => x.Id == h.LastEditedBy) ?? users.FirstOrDefault();
+                    h.RepresentedByUser = users.SingleOrDefault(x => x.Id == h.RepresentativeId) ?? users.FirstOrDefault();
                     db.House.Add(h);
                 }
                 db.SaveChanges();

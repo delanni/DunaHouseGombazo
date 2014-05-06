@@ -17,6 +17,8 @@ namespace DunaHouseGombazo
         private bool editMode;
         DHSEntities db;
 
+        private int imageIndexer = -1;
+
         public HouseDetailsForm(House selectedHouse, bool editMode = false, DHSEntities outerDataContext = null)
         {
             InitializeComponent();
@@ -29,6 +31,7 @@ namespace DunaHouseGombazo
             else db = outerDataContext;
 
             houseBindingSource.DataSource = selectedHouse;
+            imageBindingSource.DataSource = selectedHouse.Image.FirstOrDefault() ?? new Image();
         }
 
         private void addnewbutton_Click(object sender, EventArgs e)
@@ -89,7 +92,7 @@ namespace DunaHouseGombazo
             conditionComboBox.ValueMember = "Id";
             conditionComboBox.DisplayMember = "TextForm";
             conditionComboBox.DataSource = db.Conditioning.ToList();
-            conditionComboBox.SelectedValue = this.house.Condition ?? 0;
+            conditionComboBox.SelectedValue = this.house.Condition ?? 1;
 
             heatingComboBox.ValueMember = "Id";
             heatingComboBox.DisplayMember = "TextForm";
@@ -138,6 +141,63 @@ namespace DunaHouseGombazo
             if (result == System.Windows.Forms.DialogResult.OK && DashboardForm.User.Id == id)
             {
                 DashboardForm.User = db.User.Single(x => x.Id == id);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var imagePrompt = new ImagePrompt();
+            var result = imagePrompt.ShowDialog();
+            if (result == System.Windows.Forms.DialogResult.OK)
+            {
+                var i = new Image();
+                i.HouseId = this.house.Id;
+                i.House = this.house;
+                i.ImageUrl = imagePrompt.ImageUrl;
+                house.Image.Add(i);
+                nextImageButton_Click(sender, e);
+            }
+        }
+
+        private void nextImageButton_Click(object sender, EventArgs e)
+        {
+            if (house.Image.Any())
+            {
+                imageIndexer++;
+                if (imageIndexer >= house.Image.Count) imageIndexer = house.Image.Count - 1;
+                imageBindingSource.DataSource = house.Image.ElementAt(imageIndexer);
+            }
+        }
+
+        private void previousImageButton_Click(object sender, EventArgs e)
+        {
+            if (house.Image.Any())
+            {
+                imageIndexer--;
+                if (imageIndexer <= 0) imageIndexer = 0;
+                imageBindingSource.DataSource = house.Image.ElementAt(imageIndexer);
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var toRemove = house.Image.ElementAt(imageIndexer);
+            house.Image.Remove(toRemove);
+            if (house.Image.Count <= imageIndexer)
+            {
+                imageIndexer = house.Image.Count - 1;
+                if (imageIndexer >= 0)
+                {
+                    imageBindingSource.DataSource = house.Image.ElementAt(imageIndexer);
+                }
+                else
+                {
+                    imageBindingSource.DataSource = new Image();
+                }
+            }
+            else
+            {
+                imageBindingSource.DataSource = house.Image.ElementAt(imageIndexer);
             }
         }
     }

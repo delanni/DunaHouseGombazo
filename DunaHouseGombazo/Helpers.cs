@@ -33,4 +33,13 @@ namespace DunaHouseGombazo
             }
         }
     }
+
+    public class Bindable<T>
+    {
+        public T Value { get; set; }
+        public Bindable(T value)
+        {
+            Value = value;
+        }
+    }
 }

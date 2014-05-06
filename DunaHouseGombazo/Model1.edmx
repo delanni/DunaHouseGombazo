@@ -92,7 +92,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="ImageUrl" Type="nvarchar" MaxLength="500" />
           <Property Name="HouseId" Type="int" Nullable="false" />
         </EntityType>
