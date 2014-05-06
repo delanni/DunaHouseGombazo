@@ -71,7 +71,7 @@
             this.button1.Location = new System.Drawing.Point(341, 314);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 100);
-            this.button1.TabIndex = 0;
+            this.button1.TabIndex = 1;
             this.button1.Text = "Add new";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -82,7 +82,7 @@
             this.exportButton.Location = new System.Drawing.Point(789, 314);
             this.exportButton.Name = "exportButton";
             this.exportButton.Size = new System.Drawing.Size(100, 100);
-            this.exportButton.TabIndex = 0;
+            this.exportButton.TabIndex = 3;
             this.exportButton.Text = "Export";
             this.exportButton.UseVisualStyleBackColor = true;
             this.exportButton.Click += new System.EventHandler(this.exportButton_Click);
@@ -93,7 +93,7 @@
             this.importButton.Location = new System.Drawing.Point(565, 314);
             this.importButton.Name = "importButton";
             this.importButton.Size = new System.Drawing.Size(100, 100);
-            this.importButton.TabIndex = 0;
+            this.importButton.TabIndex = 2;
             this.importButton.Text = "Import";
             this.importButton.UseVisualStyleBackColor = true;
             this.importButton.Click += new System.EventHandler(this.importButton_Click);
@@ -103,7 +103,8 @@
             this.button4.Location = new System.Drawing.Point(846, 56);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(151, 23);
-            this.button4.TabIndex = 2;
+            this.button4.TabIndex = 0;
+            this.button4.TabStop = false;
             this.button4.Text = "Sign out";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
@@ -117,7 +118,6 @@
             this.nameLabelX.Name = "nameLabelX";
             this.nameLabelX.Size = new System.Drawing.Size(300, 24);
             this.nameLabelX.TabIndex = 4;
-            this.nameLabelX.TabStop = true;
             this.nameLabelX.Text = "NAME HERE";
             this.nameLabelX.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.nameLabelX.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.nameLabel_LinkClicked);
@@ -128,7 +128,7 @@
             this.searchUsersButton.Location = new System.Drawing.Point(117, 80);
             this.searchUsersButton.Name = "searchUsersButton";
             this.searchUsersButton.Size = new System.Drawing.Size(100, 100);
-            this.searchUsersButton.TabIndex = 0;
+            this.searchUsersButton.TabIndex = 4;
             this.searchUsersButton.Text = "Search users";
             this.searchUsersButton.UseVisualStyleBackColor = true;
             this.searchUsersButton.Click += new System.EventHandler(this.browseUsersButton_Click);
@@ -138,7 +138,7 @@
             this.userSearchTextBox.Location = new System.Drawing.Point(118, 220);
             this.userSearchTextBox.Name = "userSearchTextBox";
             this.userSearchTextBox.Size = new System.Drawing.Size(100, 20);
-            this.userSearchTextBox.TabIndex = 6;
+            this.userSearchTextBox.TabIndex = 5;
             this.userSearchTextBox.Visible = false;
             this.userSearchTextBox.TextChanged += new System.EventHandler(this.userSearchTextBox_TextChanged);
             // 
@@ -171,7 +171,7 @@
             this.addUserButton.Location = new System.Drawing.Point(565, 80);
             this.addUserButton.Name = "addUserButton";
             this.addUserButton.Size = new System.Drawing.Size(100, 100);
-            this.addUserButton.TabIndex = 0;
+            this.addUserButton.TabIndex = 6;
             this.addUserButton.Text = "Add user";
             this.addUserButton.UseVisualStyleBackColor = true;
             this.addUserButton.Click += new System.EventHandler(this.addUserButton_Click);

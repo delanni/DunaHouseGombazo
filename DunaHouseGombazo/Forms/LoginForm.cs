@@ -16,25 +16,6 @@ namespace DunaHouseGombazo
         public LoginForm()
         {
             InitializeComponent();
-            using (var db = new DHSEntities())
-            {
-                if (!db.User.Any(x => x.UserName == "hailey"))
-                {
-                    db.User.Add(User.Create("hailey", "Hailey Kőbányai", "hailey", "hailey@dh.hu", "+707033373373"));
-                    db.SaveChanges();
-                    db.User.First().IsAdmin = true;
-                    db.SaveChanges();
-                }
-
-                if (!db.User.Any(x => x.UserName == "x"))
-                {
-                    db.User.Add(User.Create("x", "x y", "x", "xy@dh.hu", "+307033373373"));
-                    db.SaveChanges();
-                    db.User.First().IsAdmin = true;
-                    db.SaveChanges();
-                }
-            }
-
         }
 
         private void EscapeHandler(object sender, KeyPressEventArgs e)
@@ -105,6 +86,11 @@ namespace DunaHouseGombazo
                     }
                 }
             }
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Try the credentials \"hailey\" : \"hailey\" for an easy pass.", "Pro tip.");
         }
     }
 }

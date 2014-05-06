@@ -34,28 +34,6 @@ namespace DunaHouseGombazo
             imageBindingSource.DataSource = selectedHouse.Image.FirstOrDefault() ?? new Image();
         }
 
-        private void addnewbutton_Click(object sender, EventArgs e)
-        {
-            if (!editMode)
-            {
-                this.Close();
-                return;
-            }
-
-            this.house.LastEditedByUser = db.User.SingleOrDefault(x => x.Id == DashboardForm.User.Id);
-            this.house.LastEditedBy = DashboardForm.User.Id;
-
-            foreach (Control c in this.Controls)
-            {
-                if (c is TextBox || c is ComboBox || c is CheckBox)
-                    if (!validate(c)) return;
-            }
-
-            this.DialogResult = DialogResult.OK;
-            this.Close();
-
-        }
-
         private bool validate(Control c)
         {
             var regex = (string)c.Tag;
@@ -65,12 +43,12 @@ namespace DunaHouseGombazo
             {
                 if (!Regex.IsMatch(c.Text, regex))
                 {
-                    c.BackColor = Color.LightSalmon;
+                    c.BackColor = Color.LightSalmon ;
                     return false;
                 }
                 else
                 {
-                    c.BackColor = DefaultBackColor;
+                    c.BackColor = System.Drawing.SystemColors.Window;
                 }
             }
             return true;
@@ -99,6 +77,8 @@ namespace DunaHouseGombazo
             heatingComboBox.DataSource = db.Heating.ToList();
             heatingComboBox.SelectedIndex = this.house.Heating ?? 1;
 
+            renderExtras();
+
             if (editMode == false)
             {
                 foreach (Control c in this.Controls)
@@ -107,7 +87,69 @@ namespace DunaHouseGombazo
                         c.Enabled = false;
                 }
                 saveButton.Text = "Close";
+                editExtrasPanel.Visible = false;
             }
+        }
+
+        private void renderExtras()
+        {
+            extrasPanel.Controls.Clear();
+
+            for (var i = 0; i < house.Extras.Count; i++)
+            {
+                var extra = house.Extras.ElementAt(i);
+
+                var cName = new TextBox();
+                cName.Text = extra.Name;
+                cName.Width = extrasPanel.Width / 7 * 3;
+                cName.Margin = new System.Windows.Forms.Padding(8, 6, 1, 6);
+                cName.Enabled = false;
+                cName.Tag = extra;
+
+                var cValue = new TextBox();
+                cValue.Text = extra.Value;
+                cValue.Width = extrasPanel.Width / 7 * 3;
+                cValue.Margin = new System.Windows.Forms.Padding(1, 6, 8, 6);
+                cValue.Enabled = false;
+                cValue.Tag = extra;
+
+                var cDeleteButton = new Button();
+                cDeleteButton.Text = "X";
+                cDeleteButton.Width = 18;
+                cDeleteButton.Tag = extra;
+                cDeleteButton.Click += cDeleteButton_Click;
+                cDeleteButton.Visible = editMode;
+
+                extrasPanel.Controls.Add(cName);
+                extrasPanel.Controls.Add(cValue);
+                extrasPanel.Controls.Add(cDeleteButton);
+            }
+        }
+
+        void cDeleteButton_Click(object sender, EventArgs e)
+        {
+            house.Extras.Remove((sender as Button).Tag as Extra);
+            renderExtras();
+        }
+
+        void cValue_TextChanged(object sender, EventArgs e)
+        {
+            TextBox tb = (sender as TextBox);
+            var extra = ( tb.Tag as Extra);
+            extra.Value = tb.Text;
+            renderExtras();
+            //var newTb = extrasPanel.Controls.OfType<TextBox>().FirstOrDefault(x => x.Text == extra.Value);
+            //newTb.Focus();
+        }
+
+        void cName_TextChanged(object sender, EventArgs e)
+        {
+            TextBox tb = (sender as TextBox);
+            var extra = (tb.Tag as Extra);
+            extra.Name = tb.Text;
+            renderExtras();
+            //var newTb = extrasPanel.Controls.OfType<TextBox>().FirstOrDefault(x => x.Text == extra.Name);
+            //newTb.Focus();
         }
 
         private void representativeComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -199,6 +241,50 @@ namespace DunaHouseGombazo
             {
                 imageBindingSource.DataSource = house.Image.ElementAt(imageIndexer);
             }
+        }
+
+        private void addExtraButton_Click(object sender, EventArgs e)
+        {
+            if (extraNameTextbox.Text.Any())
+            {
+                var extra = new Extra();
+                extra.Name = extraNameTextbox.Text;
+                extra.Value = extraValueTextbox.Text;
+
+                house.Extras.Add(extra);
+
+                extraNameTextbox.Clear();
+                extraValueTextbox.Clear();
+
+                renderExtras();
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            if (!editMode)
+            {
+                this.Close();
+                return;
+            }
+
+            this.house.LastEditedByUser = db.User.SingleOrDefault(x => x.Id == DashboardForm.User.Id);
+            this.house.LastEditedBy = DashboardForm.User.Id;
+
+            foreach (Control c in this.Controls)
+            {
+                if (c is TextBox || c is ComboBox || c is CheckBox)
+                    if (!validate(c)) return;
+            }
+
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
     }
 }

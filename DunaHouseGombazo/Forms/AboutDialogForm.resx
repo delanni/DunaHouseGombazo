@@ -117,4 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="richTextBox1.Text" xml:space="preserve">
+    <value>The application is fully free and shareable, feel free to tweet about it, share it on facebook, blog about it, invite about a stranger from the street - feed him, pour wine to him, and none the less - tell him about this wonderful application.
+Here are some icons: ®©♂☻™™
+</value>
+  </data>
 </root>

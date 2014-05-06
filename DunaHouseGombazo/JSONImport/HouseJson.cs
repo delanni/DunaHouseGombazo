@@ -8,7 +8,11 @@ namespace DunaHouseGombazo.JSONImport
 {
     public class HouseJson
     {
-        public HouseJson() { }
+        public HouseJson() {
+            this.Images = new List<ImageJson>();
+
+            this.Extras = new List<ExtraJson>();
+        }
 
         public HouseJson(House h)
         {
@@ -31,6 +35,7 @@ namespace DunaHouseGombazo.JSONImport
             this.Size = h.Size;
             this.Address = h.Address;
             this.Images = h.Image.Select(x=>new ImageJson(x));
+            this.Extras = h.Extras.Select(x => new ExtraJson(x));
         }
 
         public House ToHouse()
@@ -56,6 +61,7 @@ namespace DunaHouseGombazo.JSONImport
             t.Size = h.Size;
             t.Address = h.Address;
             t.Image = h.Images.Select(x=>x.ToImage()).ToList();
+            t.Extras = h.Extras.Select(x => x.ToExtra()).ToList();
             return t;
         }
 
@@ -96,6 +102,8 @@ namespace DunaHouseGombazo.JSONImport
         public string Address { get; set; }
 
         public IEnumerable<ImageJson> Images { get; set; }
+
+        public IEnumerable<ExtraJson> Extras { get; set; }
     }
 
 }

@@ -44,6 +44,7 @@
             System.Windows.Forms.Label representativeIdLabel;
             System.Windows.Forms.Label sizeLabel;
             System.Windows.Forms.Label descriptionLabel;
+            System.Windows.Forms.Label label1;
             this.balconyCheckBox = new System.Windows.Forms.CheckBox();
             this.currencyTextBox = new System.Windows.Forms.TextBox();
             this.floorTextBox = new System.Windows.Forms.TextBox();
@@ -55,14 +56,18 @@
             this.priceTextBox = new System.Windows.Forms.TextBox();
             this.referenceIdTextBox = new System.Windows.Forms.TextBox();
             this.sizeTextBox = new System.Windows.Forms.TextBox();
-            this.saveButton = new System.Windows.Forms.Button();
             this.lastModifiedLinkLabel = new System.Windows.Forms.LinkLabel();
             this.createdByLinkLabel = new System.Windows.Forms.LinkLabel();
             this.representativeComboBox = new System.Windows.Forms.ComboBox();
             this.representativeLinkLabel = new System.Windows.Forms.LinkLabel();
             this.descriptionTextBox = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.extrasPanel = new System.Windows.Forms.Panel();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.extrasPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.editExtrasPanel = new System.Windows.Forms.Panel();
+            this.addExtraButton = new System.Windows.Forms.Button();
+            this.extraValueTextbox = new System.Windows.Forms.TextBox();
+            this.extraNameTextbox = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.imageBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -72,6 +77,9 @@
             this.previousImageButton = new System.Windows.Forms.Button();
             this.heatingComboBox = new System.Windows.Forms.ComboBox();
             this.conditionComboBox = new System.Windows.Forms.ComboBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.saveButton = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.houseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             conditionLabel = new System.Windows.Forms.Label();
             createdByLabel = new System.Windows.Forms.Label();
@@ -88,7 +96,13 @@
             representativeIdLabel = new System.Windows.Forms.Label();
             sizeLabel = new System.Windows.Forms.Label();
             descriptionLabel = new System.Windows.Forms.Label();
+            label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            this.editExtrasPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBindingSource)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -98,7 +112,7 @@
             // conditionLabel
             // 
             conditionLabel.AutoSize = true;
-            conditionLabel.Location = new System.Drawing.Point(78, 287);
+            conditionLabel.Location = new System.Drawing.Point(78, 291);
             conditionLabel.Name = "conditionLabel";
             conditionLabel.Size = new System.Drawing.Size(54, 13);
             conditionLabel.TabIndex = 3;
@@ -143,7 +157,7 @@
             // heatingLabel
             // 
             heatingLabel.AutoSize = true;
-            heatingLabel.Location = new System.Drawing.Point(85, 260);
+            heatingLabel.Location = new System.Drawing.Point(85, 264);
             heatingLabel.Name = "heatingLabel";
             heatingLabel.Size = new System.Drawing.Size(47, 13);
             heatingLabel.TabIndex = 15;
@@ -215,7 +229,7 @@
             // sizeLabel
             // 
             sizeLabel.AutoSize = true;
-            sizeLabel.Location = new System.Drawing.Point(102, 225);
+            sizeLabel.Location = new System.Drawing.Point(102, 211);
             sizeLabel.Name = "sizeLabel";
             sizeLabel.Size = new System.Drawing.Size(30, 13);
             sizeLabel.TabIndex = 35;
@@ -323,21 +337,11 @@
             // sizeTextBox
             // 
             this.sizeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.houseBindingSource, "Size", true));
-            this.sizeTextBox.Location = new System.Drawing.Point(138, 222);
+            this.sizeTextBox.Location = new System.Drawing.Point(138, 208);
             this.sizeTextBox.Name = "sizeTextBox";
             this.sizeTextBox.Size = new System.Drawing.Size(104, 20);
             this.sizeTextBox.TabIndex = 36;
             this.sizeTextBox.Tag = "\\d+";
-            // 
-            // saveButton
-            // 
-            this.saveButton.Location = new System.Drawing.Point(73, 435);
-            this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(309, 72);
-            this.saveButton.TabIndex = 111;
-            this.saveButton.Text = "Save";
-            this.saveButton.UseVisualStyleBackColor = true;
-            this.saveButton.Click += new System.EventHandler(this.addnewbutton_Click);
             // 
             // lastModifiedLinkLabel
             // 
@@ -392,22 +396,77 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.extrasPanel);
-            this.groupBox1.Location = new System.Drawing.Point(440, 435);
+            this.groupBox1.Controls.Add(this.splitContainer1);
+            this.groupBox1.Location = new System.Drawing.Point(12, 425);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(412, 109);
+            this.groupBox1.Size = new System.Drawing.Size(426, 151);
             this.groupBox1.TabIndex = 118;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Extras";
             // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.IsSplitterFixed = true;
+            this.splitContainer1.Location = new System.Drawing.Point(3, 16);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.extrasPanel);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.editExtrasPanel);
+            this.splitContainer1.Size = new System.Drawing.Size(420, 132);
+            this.splitContainer1.SplitterDistance = 98;
+            this.splitContainer1.TabIndex = 0;
+            // 
             // extrasPanel
             // 
             this.extrasPanel.AutoScroll = true;
+            this.extrasPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.extrasPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.extrasPanel.Location = new System.Drawing.Point(3, 16);
+            this.extrasPanel.Location = new System.Drawing.Point(0, 0);
             this.extrasPanel.Name = "extrasPanel";
-            this.extrasPanel.Size = new System.Drawing.Size(406, 90);
+            this.extrasPanel.Size = new System.Drawing.Size(420, 98);
             this.extrasPanel.TabIndex = 0;
+            // 
+            // editExtrasPanel
+            // 
+            this.editExtrasPanel.Controls.Add(this.addExtraButton);
+            this.editExtrasPanel.Controls.Add(this.extraValueTextbox);
+            this.editExtrasPanel.Controls.Add(this.extraNameTextbox);
+            this.editExtrasPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.editExtrasPanel.Location = new System.Drawing.Point(0, 0);
+            this.editExtrasPanel.Name = "editExtrasPanel";
+            this.editExtrasPanel.Size = new System.Drawing.Size(420, 30);
+            this.editExtrasPanel.TabIndex = 0;
+            // 
+            // addExtraButton
+            // 
+            this.addExtraButton.Location = new System.Drawing.Point(322, 4);
+            this.addExtraButton.Name = "addExtraButton";
+            this.addExtraButton.Size = new System.Drawing.Size(87, 23);
+            this.addExtraButton.TabIndex = 8;
+            this.addExtraButton.Text = "Add Extra";
+            this.addExtraButton.UseVisualStyleBackColor = true;
+            this.addExtraButton.Click += new System.EventHandler(this.addExtraButton_Click);
+            // 
+            // extraValueTextbox
+            // 
+            this.extraValueTextbox.Location = new System.Drawing.Point(170, 5);
+            this.extraValueTextbox.Name = "extraValueTextbox";
+            this.extraValueTextbox.Size = new System.Drawing.Size(144, 20);
+            this.extraValueTextbox.TabIndex = 7;
+            // 
+            // extraNameTextbox
+            // 
+            this.extraNameTextbox.Location = new System.Drawing.Point(3, 5);
+            this.extraNameTextbox.Name = "extraNameTextbox";
+            this.extraNameTextbox.Size = new System.Drawing.Size(157, 20);
+            this.extraNameTextbox.TabIndex = 6;
             // 
             // pictureBox1
             // 
@@ -478,7 +537,7 @@
             // 
             this.heatingComboBox.DisplayMember = "LastEditedByUser";
             this.heatingComboBox.FormattingEnabled = true;
-            this.heatingComboBox.Location = new System.Drawing.Point(138, 257);
+            this.heatingComboBox.Location = new System.Drawing.Point(138, 261);
             this.heatingComboBox.Name = "heatingComboBox";
             this.heatingComboBox.Size = new System.Drawing.Size(199, 21);
             this.heatingComboBox.TabIndex = 115;
@@ -488,11 +547,49 @@
             // 
             this.conditionComboBox.DisplayMember = "LastEditedByUser";
             this.conditionComboBox.FormattingEnabled = true;
-            this.conditionComboBox.Location = new System.Drawing.Point(138, 284);
+            this.conditionComboBox.Location = new System.Drawing.Point(138, 288);
             this.conditionComboBox.Name = "conditionComboBox";
             this.conditionComboBox.Size = new System.Drawing.Size(199, 21);
             this.conditionComboBox.TabIndex = 115;
             this.conditionComboBox.ValueMember = "LastEditedBy";
+            // 
+            // textBox1
+            // 
+            this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.houseBindingSource, "Address", true));
+            this.textBox1.Location = new System.Drawing.Point(138, 234);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(244, 20);
+            this.textBox1.TabIndex = 36;
+            this.textBox1.Tag = "";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(84, 237);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(48, 13);
+            label1.TabIndex = 35;
+            label1.Text = "Address:";
+            // 
+            // saveButton
+            // 
+            this.saveButton.Location = new System.Drawing.Point(503, 441);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(309, 72);
+            this.saveButton.TabIndex = 121;
+            this.saveButton.Text = "Save";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(503, 534);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(309, 36);
+            this.button1.TabIndex = 121;
+            this.button1.Text = "Cancel";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // houseBindingSource
             // 
@@ -503,7 +600,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(865, 565);
+            this.ClientSize = new System.Drawing.Size(867, 588);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.saveButton);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(descriptionLabel);
             this.Controls.Add(this.descriptionTextBox);
@@ -513,7 +612,6 @@
             this.Controls.Add(this.representativeLinkLabel);
             this.Controls.Add(this.createdByLinkLabel);
             this.Controls.Add(this.lastModifiedLinkLabel);
-            this.Controls.Add(this.saveButton);
             this.Controls.Add(this.balconyCheckBox);
             this.Controls.Add(conditionLabel);
             this.Controls.Add(createdByLabel);
@@ -537,13 +635,21 @@
             this.Controls.Add(referenceIdLabel);
             this.Controls.Add(this.referenceIdTextBox);
             this.Controls.Add(representativeIdLabel);
+            this.Controls.Add(label1);
             this.Controls.Add(sizeLabel);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.sizeTextBox);
             this.Controls.Add(this.groupBox2);
             this.Name = "HouseDetailsForm";
             this.Text = "HouseDetailsForm";
             this.Load += new System.EventHandler(this.HouseDetailsForm_Load);
             this.groupBox1.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            this.editExtrasPanel.ResumeLayout(false);
+            this.editExtrasPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBindingSource)).EndInit();
             this.groupBox2.ResumeLayout(false);
@@ -567,7 +673,6 @@
         private System.Windows.Forms.TextBox priceTextBox;
         private System.Windows.Forms.TextBox referenceIdTextBox;
         private System.Windows.Forms.TextBox sizeTextBox;
-        private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.LinkLabel lastModifiedLinkLabel;
         private System.Windows.Forms.LinkLabel createdByLinkLabel;
         private System.Windows.Forms.ComboBox representativeComboBox;
@@ -580,9 +685,17 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button previousImageButton;
-        private System.Windows.Forms.Panel extrasPanel;
         private System.Windows.Forms.ComboBox heatingComboBox;
         private System.Windows.Forms.ComboBox conditionComboBox;
         private System.Windows.Forms.BindingSource imageBindingSource;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.FlowLayoutPanel extrasPanel;
+        private System.Windows.Forms.Panel editExtrasPanel;
+        private System.Windows.Forms.Button addExtraButton;
+        private System.Windows.Forms.TextBox extraValueTextbox;
+        private System.Windows.Forms.TextBox extraNameTextbox;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button saveButton;
+        private System.Windows.Forms.Button button1;
     }
 }

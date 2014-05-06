@@ -33,8 +33,10 @@
             this.searchGroupBox = new System.Windows.Forms.GroupBox();
             this.keywordHintLabel = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.tbKeywordValue = new System.Windows.Forms.TextBox();
+            this.tbAddress = new System.Windows.Forms.TextBox();
             this.tbKeyword = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -73,8 +75,7 @@
             this.importButton = new System.Windows.Forms.Button();
             this.exportButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
-            this.tbAddress = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
+            this.houseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -90,13 +91,7 @@
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.houseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -195,6 +190,15 @@
             this.label16.TabIndex = 15;
             this.label16.Text = "Keyword value";
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(16, 301);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(88, 13);
+            this.label18.TabIndex = 14;
+            this.label18.Text = "Address contains";
+            // 
             // label17
             // 
             this.label17.AutoSize = true;
@@ -209,9 +213,18 @@
             this.tbKeywordValue.Location = new System.Drawing.Point(112, 424);
             this.tbKeywordValue.Name = "tbKeywordValue";
             this.tbKeywordValue.Size = new System.Drawing.Size(200, 20);
-            this.tbKeywordValue.TabIndex = 12;
+            this.tbKeywordValue.TabIndex = 15;
             this.tbKeywordValue.Enter += new System.EventHandler(this.tbKeywordValue_Enter);
             this.tbKeywordValue.Leave += new System.EventHandler(this.tbKeywordValue_Leave);
+            // 
+            // tbAddress
+            // 
+            this.tbAddress.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.tbAddress.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.tbAddress.Location = new System.Drawing.Point(112, 298);
+            this.tbAddress.Name = "tbAddress";
+            this.tbAddress.Size = new System.Drawing.Size(200, 20);
+            this.tbAddress.TabIndex = 11;
             // 
             // tbKeyword
             // 
@@ -220,7 +233,7 @@
             this.tbKeyword.Location = new System.Drawing.Point(112, 391);
             this.tbKeyword.Name = "tbKeyword";
             this.tbKeyword.Size = new System.Drawing.Size(200, 20);
-            this.tbKeyword.TabIndex = 13;
+            this.tbKeyword.TabIndex = 14;
             this.tbKeyword.TextChanged += new System.EventHandler(this.tbKeyword_TextChanged);
             // 
             // label13
@@ -308,10 +321,11 @@
             // 
             // tbRefid
             // 
+            this.tbRefid.BackColor = System.Drawing.SystemColors.Window;
             this.tbRefid.Location = new System.Drawing.Point(112, 26);
             this.tbRefid.Name = "tbRefid";
             this.tbRefid.Size = new System.Drawing.Size(100, 20);
-            this.tbRefid.TabIndex = 9;
+            this.tbRefid.TabIndex = 1;
             // 
             // cbRoomsMax
             // 
@@ -327,42 +341,42 @@
             this.cbRoomsMin.Location = new System.Drawing.Point(131, 227);
             this.cbRoomsMin.Name = "cbRoomsMin";
             this.cbRoomsMin.Size = new System.Drawing.Size(48, 21);
-            this.cbRoomsMin.TabIndex = 8;
+            this.cbRoomsMin.TabIndex = 7;
             // 
             // tbSizeMin
             // 
             this.tbSizeMin.Location = new System.Drawing.Point(142, 159);
             this.tbSizeMin.Name = "tbSizeMin";
             this.tbSizeMin.Size = new System.Drawing.Size(100, 20);
-            this.tbSizeMin.TabIndex = 7;
+            this.tbSizeMin.TabIndex = 5;
             // 
             // tbSizeMax
             // 
             this.tbSizeMax.Location = new System.Drawing.Point(142, 185);
             this.tbSizeMax.Name = "tbSizeMax";
             this.tbSizeMax.Size = new System.Drawing.Size(100, 20);
-            this.tbSizeMax.TabIndex = 7;
+            this.tbSizeMax.TabIndex = 6;
             // 
             // tbPriceMax
             // 
             this.tbPriceMax.Location = new System.Drawing.Point(142, 115);
             this.tbPriceMax.Name = "tbPriceMax";
             this.tbPriceMax.Size = new System.Drawing.Size(100, 20);
-            this.tbPriceMax.TabIndex = 7;
+            this.tbPriceMax.TabIndex = 4;
             // 
             // tbPriceMin
             // 
             this.tbPriceMin.Location = new System.Drawing.Point(142, 89);
             this.tbPriceMin.Name = "tbPriceMin";
             this.tbPriceMin.Size = new System.Drawing.Size(100, 20);
-            this.tbPriceMin.TabIndex = 7;
+            this.tbPriceMin.TabIndex = 3;
             // 
             // tbLongName
             // 
             this.tbLongName.Location = new System.Drawing.Point(112, 58);
             this.tbLongName.Name = "tbLongName";
             this.tbLongName.Size = new System.Drawing.Size(200, 20);
-            this.tbLongName.TabIndex = 6;
+            this.tbLongName.TabIndex = 2;
             // 
             // cbHeating
             // 
@@ -370,14 +384,14 @@
             this.cbHeating.Location = new System.Drawing.Point(112, 358);
             this.cbHeating.Name = "cbHeating";
             this.cbHeating.Size = new System.Drawing.Size(121, 21);
-            this.cbHeating.TabIndex = 5;
+            this.cbHeating.TabIndex = 13;
             // 
             // cbConditioning
             // 
             this.cbConditioning.Location = new System.Drawing.Point(112, 331);
             this.cbConditioning.Name = "cbConditioning";
             this.cbConditioning.Size = new System.Drawing.Size(121, 21);
-            this.cbConditioning.TabIndex = 5;
+            this.cbConditioning.TabIndex = 12;
             // 
             // label7
             // 
@@ -403,7 +417,7 @@
             this.cbHasLift.Location = new System.Drawing.Point(16, 268);
             this.cbHasLift.Name = "cbHasLift";
             this.cbHasLift.Size = new System.Drawing.Size(40, 17);
-            this.cbHasLift.TabIndex = 2;
+            this.cbHasLift.TabIndex = 9;
             this.cbHasLift.Text = "Lift";
             this.cbHasLift.UseVisualStyleBackColor = true;
             // 
@@ -413,7 +427,7 @@
             this.cbHasBalcony.Location = new System.Drawing.Point(84, 268);
             this.cbHasBalcony.Name = "cbHasBalcony";
             this.cbHasBalcony.Size = new System.Drawing.Size(64, 17);
-            this.cbHasBalcony.TabIndex = 2;
+            this.cbHasBalcony.TabIndex = 10;
             this.cbHasBalcony.Text = "Balcony";
             this.cbHasBalcony.UseVisualStyleBackColor = true;
             // 
@@ -514,12 +528,7 @@
             this.dataGridViewTextBoxColumn11,
             this.dataGridViewTextBoxColumn17,
             this.dataGridViewTextBoxColumn18,
-            this.dataGridViewTextBoxColumn21,
-            this.dataGridViewTextBoxColumn22,
-            this.dataGridViewTextBoxColumn23,
-            this.dataGridViewTextBoxColumn24,
-            this.dataGridViewTextBoxColumn25,
-            this.dataGridViewTextBoxColumn26});
+            this.dataGridViewTextBoxColumn22});
             this.resultGridView.DataSource = this.houseBindingSource;
             this.resultGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.resultGridView.Location = new System.Drawing.Point(3, 16);
@@ -551,7 +560,7 @@
             this.editButton.Location = new System.Drawing.Point(87, 19);
             this.editButton.Name = "editButton";
             this.editButton.Size = new System.Drawing.Size(75, 41);
-            this.editButton.TabIndex = 0;
+            this.editButton.TabIndex = 17;
             this.editButton.Text = "Edit";
             this.editButton.UseVisualStyleBackColor = true;
             this.editButton.Click += new System.EventHandler(this.editButton_Click);
@@ -562,7 +571,7 @@
             this.viewButton.Location = new System.Drawing.Point(6, 19);
             this.viewButton.Name = "viewButton";
             this.viewButton.Size = new System.Drawing.Size(75, 41);
-            this.viewButton.TabIndex = 0;
+            this.viewButton.TabIndex = 16;
             this.viewButton.Text = "View";
             this.viewButton.UseVisualStyleBackColor = true;
             this.viewButton.Click += new System.EventHandler(this.viewButton_Click);
@@ -573,7 +582,7 @@
             this.importButton.Location = new System.Drawing.Point(179, 19);
             this.importButton.Name = "importButton";
             this.importButton.Size = new System.Drawing.Size(137, 41);
-            this.importButton.TabIndex = 0;
+            this.importButton.TabIndex = 18;
             this.importButton.Text = "Import entry";
             this.importButton.UseVisualStyleBackColor = true;
             this.importButton.Click += new System.EventHandler(this.importButton_Click);
@@ -584,7 +593,7 @@
             this.exportButton.Location = new System.Drawing.Point(352, 19);
             this.exportButton.Name = "exportButton";
             this.exportButton.Size = new System.Drawing.Size(137, 41);
-            this.exportButton.TabIndex = 0;
+            this.exportButton.TabIndex = 19;
             this.exportButton.Text = "Export entry";
             this.exportButton.UseVisualStyleBackColor = true;
             this.exportButton.Click += new System.EventHandler(this.exportButton_Click);
@@ -595,28 +604,14 @@
             this.deleteButton.Location = new System.Drawing.Point(525, 19);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(137, 41);
-            this.deleteButton.TabIndex = 0;
+            this.deleteButton.TabIndex = 20;
             this.deleteButton.Text = "Delete entry";
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
-            // tbAddress
+            // houseBindingSource
             // 
-            this.tbAddress.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.tbAddress.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.tbAddress.Location = new System.Drawing.Point(112, 298);
-            this.tbAddress.Name = "tbAddress";
-            this.tbAddress.Size = new System.Drawing.Size(200, 20);
-            this.tbAddress.TabIndex = 13;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(16, 301);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(88, 13);
-            this.label18.TabIndex = 14;
-            this.label18.Text = "Address contains";
+            this.houseBindingSource.DataSource = typeof(DunaHouseGombazo.House);
             // 
             // dataGridViewTextBoxColumn20
             // 
@@ -723,51 +718,12 @@
             this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
             this.dataGridViewTextBoxColumn18.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn21
-            // 
-            this.dataGridViewTextBoxColumn21.DataPropertyName = "ConditionType";
-            this.dataGridViewTextBoxColumn21.HeaderText = "ConditionType";
-            this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
-            this.dataGridViewTextBoxColumn21.ReadOnly = true;
-            // 
             // dataGridViewTextBoxColumn22
             // 
             this.dataGridViewTextBoxColumn22.DataPropertyName = "Extras";
             this.dataGridViewTextBoxColumn22.HeaderText = "Extras";
             this.dataGridViewTextBoxColumn22.Name = "dataGridViewTextBoxColumn22";
             this.dataGridViewTextBoxColumn22.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn23
-            // 
-            this.dataGridViewTextBoxColumn23.DataPropertyName = "HeatingType";
-            this.dataGridViewTextBoxColumn23.HeaderText = "HeatingType";
-            this.dataGridViewTextBoxColumn23.Name = "dataGridViewTextBoxColumn23";
-            this.dataGridViewTextBoxColumn23.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn24
-            // 
-            this.dataGridViewTextBoxColumn24.DataPropertyName = "CreatedByUser";
-            this.dataGridViewTextBoxColumn24.HeaderText = "CreatedByUser";
-            this.dataGridViewTextBoxColumn24.Name = "dataGridViewTextBoxColumn24";
-            this.dataGridViewTextBoxColumn24.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn25
-            // 
-            this.dataGridViewTextBoxColumn25.DataPropertyName = "LastEditedByUser";
-            this.dataGridViewTextBoxColumn25.HeaderText = "LastEditedByUser";
-            this.dataGridViewTextBoxColumn25.Name = "dataGridViewTextBoxColumn25";
-            this.dataGridViewTextBoxColumn25.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn26
-            // 
-            this.dataGridViewTextBoxColumn26.DataPropertyName = "RepresentedByUser";
-            this.dataGridViewTextBoxColumn26.HeaderText = "RepresentedByUser";
-            this.dataGridViewTextBoxColumn26.Name = "dataGridViewTextBoxColumn26";
-            this.dataGridViewTextBoxColumn26.ReadOnly = true;
-            // 
-            // houseBindingSource
-            // 
-            this.houseBindingSource.DataSource = typeof(DunaHouseGombazo.House);
             // 
             // BrowseForm
             // 
@@ -849,6 +805,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private System.Windows.Forms.BindingSource houseBindingSource;
         private System.Windows.Forms.DataGridView resultGridView;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox tbAddress;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
@@ -864,13 +822,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn21;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn22;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn23;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn24;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn25;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn26;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox tbAddress;
     }
 }

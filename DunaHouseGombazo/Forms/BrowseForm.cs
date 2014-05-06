@@ -131,8 +131,8 @@ namespace DunaHouseGombazo
             // Összeállítani az érdekes kitöltött keresési mezőket, és ezek alapján megcsinálni a lekérdezést, majd betölteni a kapott adatot a listába
             searchGroupBox.Enabled = false;
 
-            string refId = tbRefid.Text;
-            string longName = tbLongName.Text;
+            string refId = tbRefid.Text.ToUpper();
+            string longName = tbLongName.Text.ToUpper();
             int? priceMin = tbPriceMin.Text.TryParseToInt() ?? int.MinValue;
             int? priceMax = tbPriceMax.Text.TryParseToInt() ?? int.MaxValue;
             int? sizeMin = tbSizeMin.Text.TryParseToInt() ?? int.MinValue;
@@ -141,24 +141,28 @@ namespace DunaHouseGombazo
             bool withLift = cbHasLift.Checked;
             int roomsMin = (cbRoomsMin.SelectedValue == null ? null : cbRoomsMin.SelectedValue.ToString().TryParseToInt()) ?? int.MinValue;
             int roomsMax = (cbRoomsMax.SelectedValue == null ? null : cbRoomsMax.SelectedValue.ToString().TryParseToInt()) ?? int.MaxValue;
+            int conditionCriterion = (int)cbConditioning.SelectedValue;
+            int heatingCriterion = (int)cbHeating.SelectedValue;
 
-            string addressSnippet = tbAddress.Text;
+            string addressSnippet = tbAddress.Text.ToUpper();
 
-            string extraKeyword = tbKeyword.Text;
-            string extraValue = tbKeywordValue.Text;
+            string extraKeyword = tbKeyword.Text.ToUpper();
+            string extraValue = tbKeywordValue.Text.ToUpper();
 
             var startingSet = db.House.ToList();
 
-            var filtered = startingSet.Where(x => x.ReferenceId.Contains(refId) && x.LongName.Contains(longName)
+            var filtered = startingSet.Where(x => x.ReferenceId.ToUpper().Contains(refId) && x.LongName.ToUpper().Contains(longName)
                 && (!withBalcony || x.Balcony.Value) && (!withLift || x.Lift.Value)
                 && x.Price <= priceMax && x.Price >= priceMin
                 && x.Size <= sizeMax && x.Size >= sizeMin
+                && (conditionCriterion == 1 || x.Condition == conditionCriterion)
+                && (heatingCriterion == 1 || x.Heating == heatingCriterion)
                 && x.NumberOfRooms >= roomsMin && x.NumberOfRooms <= roomsMax
-                && (string.IsNullOrEmpty(addressSnippet) || (x.Address != null && x.Address.Contains(addressSnippet))));
+                && (string.IsNullOrEmpty(addressSnippet) || (x.Address != null && x.Address.ToUpper().Contains(addressSnippet))));
 
             var specialFiltered = filtered.Where(
                 x => (string.IsNullOrEmpty(extraKeyword) && string.IsNullOrEmpty(extraValue))  // vagy nincs kitöltve
-                    || x.Extras.Any(y => y.Name.Contains(extraKeyword) && y.Value.Contains(extraValue))); //vagy ha ki van, akkor van ilyen extra
+                    || x.Extras.Any(y => y.Name.ToUpper().Contains(extraKeyword) && y.Value.ToUpper().Contains(extraValue))); //vagy ha ki van, akkor van ilyen extra
 
             houseBindingSource.DataSource = specialFiltered.ToList();
 
