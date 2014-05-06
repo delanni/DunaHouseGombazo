@@ -66,10 +66,11 @@ namespace DunaHouseGombazo
         private void editButton_Click(object sender, EventArgs e)
         {
             // view forms should be closed on closing so create a new instance every time
-            openSelectedHouse(DashboardForm.User.CanEdit);
-            House h = new House();
-            var house = new HouseDetailsForm(h, true);
-            var result = house.ShowDialog();
+            var result = openSelectedHouse(DashboardForm.User.CanEdit);
+            if (result == DialogResult.OK || result == DialogResult.Yes)
+            {
+                db.SaveChanges();
+            }
         }
 
         private void importButton_Click(object sender, EventArgs e)
@@ -107,7 +108,8 @@ namespace DunaHouseGombazo
                     {
                         db.House.Remove(h);
 
-                        foreach(var extra in db.Extra.Where(x=>x.HouseId == h.Id)){
+                        foreach (var extra in db.Extra.Where(x => x.HouseId == h.Id))
+                        {
                             db.Extra.Remove(extra);
                         }
 
@@ -178,13 +180,13 @@ namespace DunaHouseGombazo
             openSelectedHouse(DashboardForm.User.CanEdit);
         }
 
-        private void openSelectedHouse(bool edit = false)
+        private DialogResult openSelectedHouse(bool edit = false)
         {
-            if (resultGridView.SelectedRows.Count == 0) return;
+            if (resultGridView.SelectedRows.Count == 0) return System.Windows.Forms.DialogResult.Ignore;
             var selectedRow = resultGridView.SelectedRows[0];
             var selectedHouse = (House)selectedRow.DataBoundItem;
 
-            (new HouseDetailsForm(selectedHouse, edit)).Show();
+            return (new HouseDetailsForm(selectedHouse, edit, db)).ShowDialog();
         }
 
         private void tbKeyword_TextChanged(object sender, EventArgs e)
